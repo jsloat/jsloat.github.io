@@ -38,7 +38,8 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^5.0.0",
+    "react-router-dom": "^6.8.1"
   },
   "homepage": "https://jsloat.github.io"
 }
