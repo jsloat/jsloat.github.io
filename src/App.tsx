@@ -1,26 +1,17 @@
 import React from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import GlobalStyle from "./GlobalStyle";
+import Resume from "./Resume";
 
 const App = () => (
   <>
-    <div>
-      <div>
-        <b>
-          <Link to="/a">Route A</Link>
-          <br />
-          <Link to="/b">Route B</Link>
-          <br />
-          <Link to="/c">Route C</Link>
-          <br />
-          <br />
-        </b>
-      </div>
-    </div>
+    <GlobalStyle />
     <Routes>
       <Route path="/" element={"home"} />
       <Route path="/a" element={"a"} />
       <Route path="/b" element={"b"} />
       <Route path="/c" element={"c"} />
+      <Route path="/resume" element={<Resume />} />
     </Routes>
   </>
 );
