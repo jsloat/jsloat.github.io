@@ -9,6 +9,10 @@ import { SectionHeaderObject } from "./types";
 const SectionHeaderContainer = styled.div`
   border-bottom: 1px solid ${SLATE_300};
   margin-top: 2em;
+  @media print {
+    margin-top: 1.5em;
+    border-bottom-color: black;
+  }
 `;
 
 export const SectionHeader = ({ text, href }: SectionHeaderObject) => {
@@ -38,13 +42,13 @@ export const RoleSummaryList = styled.ul`
 `;
 
 export const RoleSummaryText = styled.p`
-  margin-top: 0;
+  margin: 0;
 `;
 
 export const SkillBadge = styled.div`
   border: 1px solid ${SLATE_600};
   color: ${SLATE_600};
-  padding: 0.3em 0.6em;
+  padding: 0.15em 0.6em;
   display: inline-block;
   font-size: 0.8em;
   border-radius: 5px;

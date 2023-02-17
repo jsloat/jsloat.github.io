@@ -7,8 +7,11 @@ import TitleRow from "./TitleRow";
 const SkillsContainer = styled.div`
   display: flex;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 0.5em;
   flex-wrap: wrap;
+  @media print {
+    margin-top: 0.2em;
+  }
 `;
 
 const namespacedKey = ({

@@ -15,12 +15,12 @@ const PrintableWrapper = styled.div`
   @media print {
     #container {
       font-size: 12px;
-      padding: 0.5in;
+      padding: 0.25in 0.5in;
       margin: 0;
       -webkit-box-shadow: none;
       -moz-box-shadow: none;
       box-shadow: none;
-      line-height: 1.5em;
+      line-height: 1.4em;
     }
   }
 `;
@@ -50,6 +50,13 @@ const RolesContainer = styled.div`
       margin-top: 1.5em;
     }
   }
+  @media print {
+    > * {
+      :not(:first-child) {
+        margin-top: 0.9em;
+      }
+    }
+  }
 `;
 
 const Source = styled.div`
@@ -57,6 +64,9 @@ const Source = styled.div`
   font-style: italic;
   text-align: center;
   margin-top: 3em;
+  @media print {
+    display: none;
+  }
 `;
 
 const Resume = () => {
@@ -80,9 +90,9 @@ const Resume = () => {
         ))}
 
         <Source>
-          View résumé source at{" "}
-          <a href="https://github.com/jsloat/jsloat.github.io">
-            github.com/jsloat/jsloat.github.io
+          View résumé source on{" "}
+          <a href="https://github.com/jsloat/jsloat.github.io/tree/master/src/Resume">
+            Github
           </a>
         </Source>
       </Container>

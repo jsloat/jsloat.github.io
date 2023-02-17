@@ -46,10 +46,16 @@ h1 {
 h2 {
   font-size: 1.8em;
   letter-spacing: .015em;
+  @media print {
+    font-size: 1.5em;
+  }
 }
 
 h3 {
   font-size: 1.3em;
+  @media print {
+    font-size: 1.2em;
+  }
 }
 
 a {
