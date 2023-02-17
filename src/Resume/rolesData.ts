@@ -85,7 +85,7 @@ const rolesData: RolesData = [
         start: "Jul 2009",
         end: "Jun 2011",
         locationStr: "San Francisco",
-        summary: "Did marketing stuff for marketing people",
+        summary: "Did marketing stuff for marketing people.",
       },
     ],
   },
