@@ -1,4 +1,6 @@
 import React from "react";
+import { CONTAINER_PADDING } from "src/consts";
+import { useTitle } from "src/utils";
 import styled, { css } from "styled-components/macro";
 import { getMobileCSS, SectionHeader } from "./atoms";
 import Contact from "./Contact";
@@ -11,11 +13,6 @@ const PrintableWrapper = styled.div`
     margin: 0mm;
   }
   @media print {
-    body {
-      width: 8.5in;
-      height: 11in;
-      color: black;
-    }
     #container {
       font-size: 12px;
       padding: 0.5in;
@@ -23,6 +20,7 @@ const PrintableWrapper = styled.div`
       -webkit-box-shadow: none;
       -moz-box-shadow: none;
       box-shadow: none;
+      line-height: 1.5em;
     }
   }
 `;
@@ -31,13 +29,14 @@ const Container = styled.div`
   max-width: 800px;
   background-color: white;
   margin: 75px auto;
-  padding: 50px;
+  padding: ${CONTAINER_PADDING.NORMAL};
   -webkit-box-shadow: 3px 3px 6px 0px rgb(170 170 170 / 75%);
   -moz-box-shadow: 3px 3px 6px 0px rgb(170 170 170 / 75%);
   box-shadow: 3px 3px 6px 0px rgb(170 170 170 / 75%);
   ${getMobileCSS(css`
     max-width: 100%;
     margin: 0;
+    padding: ${CONTAINER_PADDING.MOBILE};
   `)}
 `;
 
@@ -48,7 +47,7 @@ const RolesContainer = styled.div`
       margin-top: 0.4em;
     }
     :not(:first-child) {
-      margin-top: 1.8em;
+      margin-top: 1.5em;
     }
   }
 `;
@@ -60,8 +59,9 @@ const Source = styled.div`
   margin-top: 3em;
 `;
 
-const Resume = () => (
-  <>
+const Resume = () => {
+  useTitle("John Sloat's Résumé");
+  return (
     <PrintableWrapper>
       <Container id="container">
         <h1>John Sloat</h1>
@@ -87,7 +87,7 @@ const Resume = () => (
         </Source>
       </Container>
     </PrintableWrapper>
-  </>
-);
+  );
+};
 
 export default Resume;

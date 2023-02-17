@@ -7,7 +7,7 @@ const App = () => (
   <>
     <GlobalStyle />
     <Routes>
-      <Route path="/" element={"home"} />
+      <Route path="/" element={<Resume />} />
       <Route path="/a" element={"a"} />
       <Route path="/b" element={"b"} />
       <Route path="/c" element={"c"} />

@@ -91,14 +91,14 @@ const rolesData: RolesData = [
   },
 
   {
-    sectionHeader: { text: "Education" },
+    sectionHeader: { text: "Claremont McKenna College" },
     roles: [
       {
-        title: "Claremont McKenna College",
+        title: "Bachelor of Arts, Computer Science",
         start: "2005",
         end: "2009",
         locationStr: "Claremont, California",
-        summary: "Bachelor of Arts, Computer Science",
+        summary: [],
       },
     ],
   },

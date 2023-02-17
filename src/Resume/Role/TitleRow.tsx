@@ -43,9 +43,8 @@ const DateRange = ({ start, end }: TitleRowProps) => (
 
 const WhenWhere = styled(FlexDiv)`
   gap: 10px;
-  margin-top: 0.35em;
-  height: 1em;
-  line-height: 1em;
+  flex-wrap: wrap;
+  row-gap: 0;
 `;
 
 //

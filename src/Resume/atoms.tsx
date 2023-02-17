@@ -20,8 +20,6 @@ export const SectionHeader = ({ text, href }: SectionHeaderObject) => {
   );
 };
 
-const ROLE_SUMMARY_MARGIN_TOP = "0.4em";
-
 export const getMobileCSS = (style: FlattenSimpleInterpolation) => css`
   @media screen and (max-width: 900px) {
     ${style}
@@ -30,16 +28,17 @@ export const getMobileCSS = (style: FlattenSimpleInterpolation) => css`
 
 export const RoleSummaryList = styled.ul`
   padding-inline-start: 0;
-  margin-block-start: ${ROLE_SUMMARY_MARGIN_TOP};
+  margin-block-start: 0;
   margin-block-end: 0;
-  list-style-position: inside;
+  list-style-position: outside;
+  margin-left: 19px;
   ${getMobileCSS(css`
     list-style-position: outside;
-  `)}
+  `)};
 `;
 
 export const RoleSummaryText = styled.p`
-  margin-top: ${ROLE_SUMMARY_MARGIN_TOP};
+  margin-top: 0;
 `;
 
 export const SkillBadge = styled.div`
@@ -49,4 +48,5 @@ export const SkillBadge = styled.div`
   display: inline-block;
   font-size: 0.8em;
   border-radius: 5px;
+  line-height: 1.5em;
 `;

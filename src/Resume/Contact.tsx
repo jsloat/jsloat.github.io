@@ -10,10 +10,10 @@ const ContactContainer = styled.div`
   display: flex;
   gap: 35px;
   margin: 0.5em 0;
+  flex-direction: row;
   ${getMobileCSS(css`
-    flex-wrap: wrap;
+    flex-direction: column;
     row-gap: 0.5em;
-    justify-content: space-between;
   `)}
 `;
 

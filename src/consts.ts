@@ -13,3 +13,8 @@ export const SLATE_900 = "#0f172a";
 //
 
 export const BASE_FONT_SIZE = "17px";
+
+export const CONTAINER_PADDING = {
+  NORMAL: "50px",
+  MOBILE: "25px",
+};
