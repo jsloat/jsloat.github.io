@@ -71,6 +71,7 @@ const Source = styled.div`
 
 const Resume = () => {
   useTitle("John Sloat's Résumé");
+
   return (
     <PrintableWrapper>
       <Container id="container">
