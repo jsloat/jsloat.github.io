@@ -1,16 +1,21 @@
-import React from "react";
-import { CONTAINER_PADDING } from "src/consts";
+import React, { useReducer } from "react";
+import { boxShadow, CONTAINER_PADDING } from "src/consts";
+import { useModal } from "src/Modal";
 import { useTitle } from "src/utils";
 import styled, { css } from "styled-components/macro";
 import { getMobileCSS, SectionHeader } from "./atoms";
 import Contact from "./Contact";
+import { defaultResumeState, ResumeContext } from "./ResumeContext";
 import Role from "./Role";
 import rolesData from "./rolesData";
+import { Settings } from "./Settings/Settings";
+import { SettingsToggle } from "./Settings/SettingsToggle";
+import { ResumeState } from "./types";
 
 const PrintableWrapper = styled.div`
   @page {
     size: auto;
-    margin: 0mm;
+    margin: 0;
   }
   @media print {
     #container {
@@ -30,9 +35,7 @@ const Container = styled.div`
   background-color: white;
   margin: 75px auto;
   padding: ${CONTAINER_PADDING.NORMAL};
-  -webkit-box-shadow: 3px 3px 6px 0px rgb(170 170 170 / 75%);
-  -moz-box-shadow: 3px 3px 6px 0px rgb(170 170 170 / 75%);
-  box-shadow: 3px 3px 6px 0px rgb(170 170 170 / 75%);
+  ${boxShadow}
   ${getMobileCSS(css`
     max-width: 100%;
     margin: 0;
@@ -70,34 +73,46 @@ const Source = styled.div`
 `;
 
 const Resume = () => {
+  const [state, dispatch] = useReducer(
+    (state: ResumeState, reducer: Identity<ResumeState>) => reducer(state),
+    defaultResumeState
+  );
   useTitle("John Sloat's Résumé");
+  const { Modal, setIsModalActive } = useModal();
 
   return (
-    <PrintableWrapper>
-      <Container id="container">
-        <h1>John Sloat</h1>
+    <ResumeContext.Provider value={{ state, dispatch }}>
+      <SettingsToggle showSettings={() => setIsModalActive(true)} />
+      <Modal>
+        <Settings hideSettings={() => setIsModalActive(false)} />
+      </Modal>
 
-        <Contact />
+      <PrintableWrapper>
+        <Container id="container">
+          <h1>John Sloat</h1>
 
-        {rolesData.map(({ sectionHeader, roles }) => (
-          <React.Fragment key={sectionHeader.text}>
-            <SectionHeader {...sectionHeader} />
-            <RolesContainer>
-              {roles.map(role => (
-                <Role {...role} key={role.title} />
-              ))}
-            </RolesContainer>
-          </React.Fragment>
-        ))}
+          <Contact />
 
-        <Source>
-          View résumé source on{" "}
-          <a href="https://github.com/jsloat/jsloat.github.io/tree/master/src/Resume">
-            Github
-          </a>
-        </Source>
-      </Container>
-    </PrintableWrapper>
+          {rolesData.map(({ sectionHeader, roles }) => (
+            <React.Fragment key={sectionHeader.text}>
+              <SectionHeader {...sectionHeader} />
+              <RolesContainer>
+                {roles.map(role => (
+                  <Role {...role} key={role.title} />
+                ))}
+              </RolesContainer>
+            </React.Fragment>
+          ))}
+
+          <Source>
+            View résumé source on{" "}
+            <a href="https://github.com/jsloat/jsloat.github.io/tree/master/src/Resume">
+              Github
+            </a>
+          </Source>
+        </Container>
+      </PrintableWrapper>
+    </ResumeContext.Provider>
   );
 };
 

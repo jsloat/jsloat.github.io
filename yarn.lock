@@ -8915,7 +8915,15 @@
   "resolved" "https://registry.npmjs.org/tryer/-/tryer-1.0.1.tgz"
   "version" "1.0.1"
 
-"tsconfig-paths@^3.14.1":
+"ts-unused-exports@^9.0.4":
+  "integrity" "sha512-/PPy0B1zhOJkDTUd1XVyaCqE/yA3IL2FrQ8W5/6cQ2g0kKC/06q8LEoPeXI6ELfI6Bivmv3MMvsUup5u3WH+BQ=="
+  "resolved" "https://registry.npmjs.org/ts-unused-exports/-/ts-unused-exports-9.0.4.tgz"
+  "version" "9.0.4"
+  dependencies:
+    "chalk" "^4.0.0"
+    "tsconfig-paths" "^3.9.0"
+
+"tsconfig-paths@^3.14.1", "tsconfig-paths@^3.9.0":
   "integrity" "sha512-fxDhWnFSLt3VuTwtvJt5fpwxBHg5AdKWMsgcPOOIilyjymcYVZoCQF8fvFRezCNfblEXmi+PcM1eYHeOAgXCOQ=="
   "resolved" "https://registry.npmjs.org/tsconfig-paths/-/tsconfig-paths-3.14.1.tgz"
   "version" "3.14.1"
@@ -9000,7 +9008,7 @@
   dependencies:
     "is-typedarray" "^1.0.0"
 
-"typescript@^3.2.1 || ^4", "typescript@>= 2.7", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta":
+"typescript@^3.2.1 || ^4", "typescript@>= 2.7", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta", "typescript@>=3.8.3":
   "integrity" "sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g=="
   "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz"
   "version" "4.9.5"

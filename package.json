@@ -17,7 +17,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "git push;gh-pages -d build"
+    "deploy": "git push;gh-pages -d build",
+    "unused": "ts-unused-exports ./tsconfig.json --exitWithUnusedTypesCount"
   },
   "eslintConfig": {
     "extends": [
@@ -41,7 +42,8 @@
     "@types/styled-components": "^5.1.26",
     "gh-pages": "^5.0.0",
     "react-router-dom": "^6.8.1",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "ts-unused-exports": "^9.0.4"
   },
   "homepage": "https://jsloat.github.io/#"
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { RoleSummaryList, RoleSummaryText, SkillBadge } from "../atoms";
+import { useResumeContext } from "../ResumeContext";
 import { RoleObject } from "../types";
 import TitleRow from "./TitleRow";
 
@@ -14,25 +15,22 @@ const SkillsContainer = styled.div`
   }
 `;
 
-const namespacedKey = ({
-  title,
-  i,
-  namespace,
-}: Pick<RoleObject, "title"> & { i: number; namespace: string }) =>
-  `${title}_${namespace}_${i}`;
-
-const Summary = ({ summary, title }: Pick<RoleObject, "summary" | "title">) =>
-  Array.isArray(summary) ? (
+const Summary = ({ summary, title }: Pick<RoleObject, "summary" | "title">) => {
+  const {
+    state: { toneOfVoice },
+  } = useResumeContext();
+  const visibleSummary = summary[toneOfVoice];
+  if (!Array.isArray(visibleSummary)) {
+    return <RoleSummaryText>{visibleSummary}</RoleSummaryText>;
+  }
+  return (
     <RoleSummaryList>
-      {summary.map((item, i) => (
-        <li key={namespacedKey({ title, i, namespace: "roleSummaryList" })}>
-          {item}
-        </li>
+      {visibleSummary.map((item, i) => (
+        <li key={`roleSummaryList_${title}_${i}`}>{item}</li>
       ))}
     </RoleSummaryList>
-  ) : (
-    <RoleSummaryText>{summary}</RoleSummaryText>
   );
+};
 
 const Role = ({ summary, skills, title, ...restProps }: RoleObject) => (
   <div>
@@ -41,9 +39,7 @@ const Role = ({ summary, skills, title, ...restProps }: RoleObject) => (
     {skills?.length && (
       <SkillsContainer>
         {skills.map((skill, i) => (
-          <SkillBadge key={namespacedKey({ title, i, namespace: "skill" })}>
-            {skill}
-          </SkillBadge>
+          <SkillBadge key={`skill_${title}_${i}`}>{skill}</SkillBadge>
         ))}
       </SkillsContainer>
     )}

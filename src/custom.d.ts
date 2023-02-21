@@ -6,5 +6,8 @@ declare module "*.svg" {
 declare namespace NodeJS {
   export type ProcessEnv = {
     PUBLIC_URL: string;
+    NODE_ENV: string;
   };
 }
+
+declare type Identity<T> = (initValue: T) => T;

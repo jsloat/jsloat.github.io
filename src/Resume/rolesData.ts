@@ -14,11 +14,18 @@ const rolesData: RolesData = [
         start: "Jul 2020",
         end: "Present",
         locationStr: "Norway & Seattle",
-        summary: [
-          "Refactored & redesigned Backbone views in React. One of this project's goals was to remove a jQuery dependency that posed a security risk.",
-          "End-to-end managed a project to introduce a user onboarding tool into our app. Clarified objectives with stakeholders in Sales, maintained task backlog, implemented, and iterated with customer teams.",
-          "Worked with customers to identify and fix performance issues in the app.",
-        ],
+        summary: {
+          Professional: [
+            "Refactored & redesigned Backbone views in React. One of this project's goals was to remove a jQuery dependency that posed a security risk.",
+            "End-to-end managed a project to introduce a user onboarding tool into our app. Clarified objectives with stakeholders in Sales, maintained task backlog, implemented, and iterated with customer teams.",
+            "Worked with customers to identify and fix performance issues in the app.",
+          ],
+          "Laid-back": [
+            "Fixed some old founder code that was functional for longer than the technology it was written in.",
+            "Built a thing with some other people. Talked to non-devs, clicked things in Jira, coded, and coded more.",
+            "Helped users find browser dev tools.",
+          ],
+        },
         skills: ["TypeScript", "RxJS", "React", "Backbone"],
       },
       {
@@ -26,12 +33,20 @@ const rolesData: RolesData = [
         start: "May 2019",
         end: "Sep 2021",
         locationStr: "Norway",
-        summary: [
-          "Managed a team of 3 engineers until relocating to Seattle.",
-          "Led quarterly KPI review sessions within my team to design our key results, mapped to top-level company objectives.",
-          "Implemented the WSFJ prioritization model engineering-wide, used to categorize & prioritize user stories & bugs.",
-          "Oversaw Summer dev internship program; defined the project, managed the backlog, and provided mentorship to 3 interns.",
-        ],
+        summary: {
+          Professional: [
+            "Managed a team of 3 engineers until relocating to Seattle.",
+            "Led quarterly KPI review sessions within my team to design our key results, mapped to top-level company objectives.",
+            "Implemented the WSFJ prioritization model engineering-wide, used to categorize & prioritize user stories & bugs.",
+            "Oversaw Summer dev internship program; defined the project, managed the backlog, and provided mentorship to 3 interns.",
+          ],
+          "Laid-back": [
+            "Adjusted project deadlines and organized slightly depressing Zoom social events during COVID.",
+            "Hosted Miro sessions where we drew boxes and tried to connect them to other boxes.",
+            "Attempted to add even more red-tape and required fields to Jira.",
+            "Strove to convince interns that the project they worked on was exciting, while simultaneously teaching them JavaScript.",
+          ],
+        },
         skills: ["TypeScript", "RxJS", "React"],
       },
       {
@@ -39,10 +54,16 @@ const rolesData: RolesData = [
         start: "Aug 2018",
         end: "Jul 2020",
         locationStr: "Norway",
-        summary: [
-          "Designed & created data pipeline, integrating metrics from our website, marketing channels, and product. Interviewed department heads to identify high-priority metrics.",
-          "Organized & led quarterly hackathons.",
-        ],
+        summary: {
+          Professional: [
+            "Designed & created data pipeline, integrating metrics from our website, marketing channels, and product. Interviewed department heads to identify high-priority metrics.",
+            "Organized & led quarterly hackathons.",
+          ],
+          "Laid-back": [
+            "Made shiny charts that people pointed at in meetings.",
+            "Harassed devs to contribute hackathon ideas, then forced them to present the results and judge each other via blind voting.",
+          ],
+        },
         skills: ["PostgreSQL", "Cube.dev", "TypeScript", "RxJS", "React"],
       },
       {
@@ -50,10 +71,16 @@ const rolesData: RolesData = [
         start: "Apr 2016",
         end: "Aug 2018",
         locationStr: "Norway",
-        summary: [
-          "Migrated website from WordPress to HubSpot.",
-          "Built and maintained website, ran our SEO, SEM, and other digital marketing channels.",
-        ],
+        summary: {
+          Professional: [
+            "Migrated website from WordPress to HubSpot.",
+            "Built and maintained website, ran our SEO, SEM, and other digital marketing channels.",
+          ],
+          "Laid-back": [
+            "Copied old, terrible HTML into an equally terrible new tool.",
+            "Attempted to make a B2B SaaS tool exciting in 140 characters or less.",
+          ],
+        },
         skills: ["HubSpot", "Intercom"],
       },
     ],
@@ -67,8 +94,12 @@ const rolesData: RolesData = [
         start: "Nov 2015",
         end: "Apr 2016",
         locationStr: "Norway",
-        summary:
-          "Delivered freelance marketing services to startups in Oslo, including strategy & measurement recommendations, & online marketing campaign implementation.",
+        summary: {
+          Professional:
+            "Delivered freelance marketing services to startups in Oslo, including strategy & measurement recommendations, & online marketing campaign implementation.",
+          "Laid-back":
+            "Started a business in a foreign language, then abused family connections to take money from startups in exchange for manageing their Adwords accounts.",
+        },
       },
     ],
   },
@@ -81,16 +112,24 @@ const rolesData: RolesData = [
         start: "Jun 2011",
         end: "Aug 2015",
         locationStr: "San Francisco & Amsterdam",
-        summary:
-          "Oversaw digital advertising budget, campaigns, & analysis. Helped design a metrics pipeline and attribution model for calculating ROI throughout the marketing funnel.",
+        summary: {
+          Professional:
+            "Oversaw digital advertising budget, campaigns, & analysis. Helped design a metrics pipeline and attribution model for calculating ROI throughout the marketing funnel.",
+          "Laid-back":
+            "Got taken out to dinner by ad vendors, looked at charts, made charts, presented charts.",
+        },
       },
       {
         title: "Product Marketing Specialist",
         start: "Jul 2009",
         end: "Jun 2011",
         locationStr: "San Francisco",
-        summary:
-          "Improved the evaluation experience for new Jira users. Managed drip-feed email campaigns, created video and written documentation, and monitored user metrics to identify areas for improvement.",
+        summary: {
+          Professional:
+            "Improved the evaluation experience for new Jira users. Managed drip-feed email campaigns, created video and written documentation, and monitored user metrics to identify areas for improvement.",
+          "Laid-back":
+            "Made low-budget tutorial videos, distributed spam, and looked at charts.",
+        },
         skills: ["Screenflow"],
       },
     ],
@@ -104,7 +143,7 @@ const rolesData: RolesData = [
         start: "2005",
         end: "2009",
         locationStr: "Claremont, California",
-        summary: [],
+        summary: { Professional: [], "Laid-back": [] },
       },
     ],
   },

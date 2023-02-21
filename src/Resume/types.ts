@@ -1,12 +1,26 @@
-export type a = 1;
+import React from "react";
+
+/** If `string[]`, render as unordered list. */
+type Summary = string | string[];
+
 export type RoleObject = {
   title: string;
   start: string;
   end: string;
   locationStr: string;
-  /** If `string[]`, render as unordered list. */
-  summary: string | string[];
+  summary: Record<ToneOfVoice, Summary>;
   skills?: string[];
 };
 
 export type SectionHeaderObject = { text: string; href?: string };
+
+type TargetRole = "Individual contributor" | "Team lead";
+
+type ToneOfVoice = "Professional" | "Laid-back";
+
+export type ResumeState = { targetRole: TargetRole; toneOfVoice: ToneOfVoice };
+
+export type ResumeContextType = {
+  state: ResumeState;
+  dispatch: React.Dispatch<Identity<ResumeState>>;
+};
