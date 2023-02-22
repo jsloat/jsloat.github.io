@@ -83,15 +83,13 @@ const Resume = () => {
   );
   useTitle("John Sloat's Résumé");
   const { Modal, setIsModalActive } = useModal();
-  useKeyListener({
-    key: "t",
-    onPress: () =>
-      dispatch(
-        setToneOfVoice(
-          state.toneOfVoice === "Laid-back" ? "Professional" : "Laid-back"
-        )
-      ),
-  });
+  useKeyListener("t", () =>
+    dispatch(
+      setToneOfVoice(
+        state.toneOfVoice === "Laid-back" ? "Professional" : "Laid-back"
+      )
+    )
+  );
 
   return (
     <ResumeContext.Provider value={{ state, dispatch }}>

@@ -37,7 +37,7 @@ const SettingsToggleButton = styled.div`
 type ToggleProps = { showSettings: () => void };
 
 export const SettingsToggle = ({ showSettings }: ToggleProps) => {
-  useKeyListener({ key: "?", onPress: showSettings });
+  useKeyListener("?", showSettings);
   return (
     <SettingsToggleContainer>
       <SettingsToggleButton onClick={showSettings}>

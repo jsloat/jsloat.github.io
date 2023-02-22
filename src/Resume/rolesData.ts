@@ -13,13 +13,13 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
     locationStr: "Norway & Seattle",
     summary: {
       Professional: [
-        "Refactored & redesigned Backbone views in React. One of this project's goals was to remove a jQuery dependency that posed a security risk.",
         "End-to-end managed a project to introduce a user onboarding tool into our app. Clarified objectives with stakeholders in Sales, maintained task backlog, implemented, and iterated with customer teams.",
-        "Worked with customers to identify and fix performance issues in the app.",
+        "Refactored & redesigned Backbone views in React. One of this project's goals was to remove a jQuery dependency that posed a security risk.",
+        "Worked with customers to identify and fix performance issues in the app. In one case, reduced load time for a specific user from several minutes to a few seconds.",
       ],
       "Laid-back": [
-        "Fixed some old founder code that was functional for longer than the technology it was written in.",
         "Built a thing with some other people. Talked to non-devs, clicked things in Jira, coded, and coded more.",
+        "Fixed some old founder code that was functional for longer than the technology it was written in.",
         "Helped users find browser dev tools.",
       ],
     },
