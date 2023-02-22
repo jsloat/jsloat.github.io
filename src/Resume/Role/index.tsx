@@ -16,10 +16,8 @@ const SkillsContainer = styled.div`
 `;
 
 const Summary = ({ summary, title }: Pick<RoleObject, "summary" | "title">) => {
-  const {
-    state: { toneOfVoice },
-  } = useResumeContext();
-  const visibleSummary = summary[toneOfVoice];
+  const { state } = useResumeContext();
+  const visibleSummary = summary[state.toneOfVoice];
   if (!Array.isArray(visibleSummary)) {
     return <RoleSummaryText>{visibleSummary}</RoleSummaryText>;
   }

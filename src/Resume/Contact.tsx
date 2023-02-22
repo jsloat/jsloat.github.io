@@ -41,7 +41,7 @@ type ContactItemProps = {
 const ContactItem = ({ text, href, imageSrc }: ContactItemProps) => (
   <ContactItemAnchor href={href}>
     <TextAndImgContainer>
-      {imageSrc && <img src={imageSrc} />}
+      {imageSrc && <img src={imageSrc} alt={href} />}
       {text}
     </TextAndImgContainer>
   </ContactItemAnchor>

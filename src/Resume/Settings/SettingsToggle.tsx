@@ -38,7 +38,7 @@ type ToggleProps = { showSettings: () => void };
 export const SettingsToggle = ({ showSettings }: ToggleProps) => (
   <SettingsToggleContainer>
     <SettingsToggleButton onClick={showSettings}>
-      <img src={settingsIcon} />
+      <img src={settingsIcon} alt="Settings icon" />
     </SettingsToggleButton>
   </SettingsToggleContainer>
 );

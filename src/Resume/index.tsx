@@ -7,7 +7,7 @@ import { getMobileCSS, SectionHeader } from "./atoms";
 import Contact from "./Contact";
 import { defaultResumeState, ResumeContext } from "./ResumeContext";
 import Role from "./Role";
-import rolesData from "./rolesData";
+import getRolesData from "./rolesData";
 import { Settings } from "./Settings/Settings";
 import { SettingsToggle } from "./Settings/SettingsToggle";
 import { ResumeState } from "./types";
@@ -93,7 +93,7 @@ const Resume = () => {
 
           <Contact />
 
-          {rolesData.map(({ sectionHeader, roles }) => (
+          {getRolesData(state).map(({ sectionHeader, roles }) => (
             <React.Fragment key={sectionHeader.text}>
               <SectionHeader {...sectionHeader} />
               <RolesContainer>

@@ -31,7 +31,7 @@ const Radio = ({ value, onClick, isSelected, name }: RadioProps) => (
       name={name}
       id={value}
       value={value}
-      onClick={onClick}
+      onChange={onClick}
       checked={isSelected}
     />
     <label htmlFor={value}>{value}</label>

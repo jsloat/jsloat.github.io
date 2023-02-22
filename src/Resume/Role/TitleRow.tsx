@@ -27,7 +27,7 @@ const LocationContainer = styled(FlexDiv)`
 `;
 const Location = ({ locationStr }: TitleRowProps) => (
   <LocationContainer>
-    <img src={mapPin} />
+    <img src={mapPin} alt="Map pin icon" />
     <span>{locationStr}</span>
   </LocationContainer>
 );
