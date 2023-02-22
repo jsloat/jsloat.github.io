@@ -67,7 +67,7 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
             ],
             "Laid-back": [
               "Made shiny charts that people pointed at in meetings.",
-              "Harassed devs to contribute hackathon ideas, then forced them to present the results and judge each other via blind voting.",
+              "Harassed devs to contribute hackathon project ideas and handed out a miniature trophy.",
             ],
           },
           skills: ["PostgreSQL", "Cube.dev", "TypeScript", "RxJS", "React"],
@@ -83,8 +83,8 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
               "Built and maintained website, ran our SEO, SEM, and other digital marketing channels.",
             ],
             "Laid-back": [
-              "Copied old, terrible HTML into an equally terrible new tool.",
-              "Attempted to make a B2B SaaS tool exciting in 140 characters or less.",
+              "Copied old, terrible PHP website code into an equally terrible new tool.",
+              "Attempted to make a B2B SaaS tool sound exciting in 140 characters or less.",
             ],
           },
           skills: ["HubSpot", "Intercom"],
@@ -104,7 +104,7 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
             Professional:
               "Delivered freelance marketing services to startups in Oslo, including strategy & measurement recommendations, & online marketing campaign implementation.",
             "Laid-back":
-              "Started a business in a foreign language, then abused family connections to take money from startups in exchange for manageing their Adwords accounts.",
+              "Started a business in a foreign language, then abused family connections to take money from startups in exchange for managing their Adwords accounts.",
           },
         },
       ],

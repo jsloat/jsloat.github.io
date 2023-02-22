@@ -27,6 +27,7 @@ const Toolbar = styled.div`
   padding: 0.7em 1.2em;
   border-top-left-radius: 40px;
   border-top-right-radius: 5px;
+  box-shadow: 0 2px 4px 0px rgb(170 170 170 / 75%);
 `;
 
 const CloseButton = styled.div`
@@ -80,7 +81,7 @@ export const Settings = ({ hideSettings }: SettingsProps) => {
             />
           </Section>
 
-          {isDevMode() && (
+          {(isDevMode() || document.location.search.includes("edit")) && (
             <Section>
               <SectionHeader>Target role</SectionHeader>
               <RadioGroup

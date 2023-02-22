@@ -1,11 +1,15 @@
 import React, { useReducer } from "react";
 import { boxShadow, CONTAINER_PADDING } from "src/consts";
 import { useModal } from "src/Modal";
-import { useTitle } from "src/utils";
+import { useKeyListener, useTitle } from "src/utils";
 import styled, { css } from "styled-components/macro";
 import { getMobileCSS, SectionHeader } from "./atoms";
 import Contact from "./Contact";
-import { defaultResumeState, ResumeContext } from "./ResumeContext";
+import {
+  defaultResumeState,
+  ResumeContext,
+  setToneOfVoice,
+} from "./ResumeContext";
 import Role from "./Role";
 import getRolesData from "./rolesData";
 import { Settings } from "./Settings/Settings";
@@ -79,6 +83,15 @@ const Resume = () => {
   );
   useTitle("John Sloat's Résumé");
   const { Modal, setIsModalActive } = useModal();
+  useKeyListener({
+    key: "t",
+    onPress: () =>
+      dispatch(
+        setToneOfVoice(
+          state.toneOfVoice === "Laid-back" ? "Professional" : "Laid-back"
+        )
+      ),
+  });
 
   return (
     <ResumeContext.Provider value={{ state, dispatch }}>

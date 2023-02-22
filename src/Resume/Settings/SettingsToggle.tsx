@@ -1,10 +1,11 @@
 import React from "react";
 import settingsIcon from "../../assets/settings.svg";
 import styled from "styled-components/macro";
+import { useKeyListener } from "src/utils";
 
 const SettingsToggleContainer = styled.div`
   position: fixed;
-  top: 1em;
+  bottom: 1em;
   right: 1em;
   @media print {
     display: none;
@@ -35,10 +36,13 @@ const SettingsToggleButton = styled.div`
 
 type ToggleProps = { showSettings: () => void };
 
-export const SettingsToggle = ({ showSettings }: ToggleProps) => (
-  <SettingsToggleContainer>
-    <SettingsToggleButton onClick={showSettings}>
-      <img src={settingsIcon} alt="Settings icon" />
-    </SettingsToggleButton>
-  </SettingsToggleContainer>
-);
+export const SettingsToggle = ({ showSettings }: ToggleProps) => {
+  useKeyListener({ key: "?", onPress: showSettings });
+  return (
+    <SettingsToggleContainer>
+      <SettingsToggleButton onClick={showSettings}>
+        <img src={settingsIcon} alt="Settings icon" />
+      </SettingsToggleButton>
+    </SettingsToggleContainer>
+  );
+};

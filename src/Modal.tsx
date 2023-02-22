@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
+import { useKeyListener } from "./utils";
 
 const setBodyOverflow = (value: string) => {
   const bodyEl = document.querySelector("body");
@@ -43,6 +44,10 @@ export const useModal = (): UseModalReturns => {
     setIsModalActive: setIsActiveWithSideEffects,
     Modal: ({ children }) => {
       if (!isModalActive) return null;
+      useKeyListener({
+        key: "Escape",
+        onPress: () => setIsActiveWithSideEffects(false),
+      });
       return (
         <Backdrop onClick={() => setIsActiveWithSideEffects(false)}>
           <DialogClickShield onClick={e => e.stopPropagation()}>
