@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components/macro";
 import linkedinLogo from "../assets/linkedin.svg";
 import githubLogo from "../assets/github.svg";
+import websiteIcon from "../assets/website.svg";
 import { getMobileCSS } from "./atoms";
 
 const FONT_SIZE = "1.2em";
@@ -60,6 +61,11 @@ const Contact = () => (
       text="/ jsloat"
       href="https://github.com/jsloat"
       imageSrc={githubLogo}
+    />
+    <ContactItem
+      text="sloat.life"
+      href="https://sloat.life"
+      imageSrc={websiteIcon}
     />
   </ContactContainer>
 );
