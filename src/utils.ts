@@ -15,3 +15,6 @@ export const useKeyListener = (key: string, onPress: () => any) => {
     return () => document.removeEventListener("keydown", callback);
   });
 };
+
+export const capitalize = (str: string) =>
+  str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();

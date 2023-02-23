@@ -11,3 +11,5 @@ declare namespace NodeJS {
 }
 
 declare type Identity<T> = (initValue: T) => T;
+
+declare type Entry<T extends AnyObj> = [key: keyof T, val: T[keyof T]];

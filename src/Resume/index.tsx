@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { boxShadow, CONTAINER_PADDING } from "src/consts";
+import { boxShadow, boxShadowPrefix, CONTAINER_PADDING } from "src/consts";
 import { useModal } from "src/Modal";
 import { useKeyListener, useTitle } from "src/utils";
 import styled, { css } from "styled-components/macro";
@@ -26,9 +26,7 @@ const PrintableWrapper = styled.div`
       font-size: 12px;
       padding: 0.25in 0.5in;
       margin: 0;
-      -webkit-box-shadow: none;
-      -moz-box-shadow: none;
-      box-shadow: none;
+      ${boxShadowPrefix("none")}
       line-height: 1.4em;
     }
   }

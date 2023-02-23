@@ -1,5 +1,5 @@
 import React from "react";
-import { SLATE_600 } from "src/consts";
+import { colors } from "src/consts";
 import styled from "styled-components/macro";
 import { RoleObject } from "../types";
 import mapPin from "../../assets/mapPin.svg";
@@ -17,7 +17,7 @@ const FlexDiv = styled.div`
 const Title = ({ title }: TitleRowProps) => <h3>{title}</h3>;
 
 const LocationContainer = styled(FlexDiv)`
-  color: ${SLATE_600};
+  color: ${colors.slate[600]};
   gap: 3px;
   img {
     height: 1em;
@@ -33,7 +33,7 @@ const Location = ({ locationStr }: TitleRowProps) => (
 );
 
 const DateRangeContainer = styled(FlexDiv)`
-  color: ${SLATE_600};
+  color: ${colors.slate[600]};
 `;
 const DateRange = ({ start, end }: TitleRowProps) => (
   <DateRangeContainer>

@@ -1,5 +1,5 @@
 import React from "react";
-import { SLATE_300, SLATE_600 } from "src/consts";
+import { colors } from "src/consts";
 import styled, {
   css,
   FlattenSimpleInterpolation,
@@ -7,7 +7,7 @@ import styled, {
 import { SectionHeaderObject } from "./types";
 
 const SectionHeaderContainer = styled.div`
-  border-bottom: 1px solid ${SLATE_300};
+  border-bottom: 1px solid ${colors.slate[300]};
   margin-top: 2em;
   @media print {
     margin-top: 1.5em;
@@ -46,8 +46,8 @@ export const RoleSummaryText = styled.p`
 `;
 
 export const SkillBadge = styled.div`
-  border: 1px solid ${SLATE_600};
-  color: ${SLATE_600};
+  border: 1px solid ${colors.slate[600]};
+  color: ${colors.slate[600]};
   padding: 0.15em 0.6em;
   display: inline-block;
   font-size: 0.8em;

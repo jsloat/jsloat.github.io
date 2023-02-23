@@ -1,5 +1,5 @@
 import { createGlobalStyle, css } from "styled-components/macro";
-import { BASE_FONT_SIZE, SLATE_300, SLATE_900 } from "./consts";
+import { BASE_FONT_SIZE, colors } from "./consts";
 import { getMobileCSS } from "./Resume/atoms";
 
 export default createGlobalStyle`
@@ -12,8 +12,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: ${BASE_FONT_SIZE};
   font-weight: 300;
-  background-color: ${SLATE_300};
-  color: ${SLATE_900};
+  background-color: ${colors.slate[300]};
+  color: ${colors.slate[900]};
   line-height: 1.5em;
   ${getMobileCSS(
     css`
@@ -59,7 +59,7 @@ h3 {
 }
 
 a {
-  color: ${SLATE_900};
+  color: ${colors.slate[900]};
   font-weight: 400
 }
 
