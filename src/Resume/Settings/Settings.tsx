@@ -40,6 +40,10 @@ const Footer = styled.div`
   justify-content: flex-end;
 `;
 
+const DoneButton = styled(Button)`
+  width: 100%;
+`;
+
 type SettingsProps = { hideSettings: () => void };
 
 export const Settings = ({ hideSettings }: SettingsProps) => {
@@ -50,7 +54,7 @@ export const Settings = ({ hideSettings }: SettingsProps) => {
       <DialogContents>
         <Section>
           <SectionHeader>Tone of voice</SectionHeader>
-          {(["Professional", "Laid-back"] as ToneOfVoice[]).map(value => (
+          {(["Professional", "Absurd"] as ToneOfVoice[]).map(value => (
             <Radio
               onClick={() => dispatch(setToneOfVoice(value))}
               isSelected={toneOfVoice === value}
@@ -79,7 +83,7 @@ export const Settings = ({ hideSettings }: SettingsProps) => {
         )}
 
         <Footer>
-          <Button onClick={hideSettings}>Done</Button>
+          <DoneButton onClick={hideSettings}>Done</DoneButton>
         </Footer>
       </DialogContents>
     </Dialog>

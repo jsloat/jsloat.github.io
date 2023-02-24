@@ -3,7 +3,7 @@ import { boxShadow, boxShadowPrefix, CONTAINER_PADDING } from "src/consts";
 import { useModal } from "src/Modal";
 import { useKeyListener, useTitle } from "src/utils";
 import styled, { css } from "styled-components/macro";
-import { getMobileCSS, SectionHeader } from "./atoms";
+import { getMobileCSS, SectionHeader, SkillBadge } from "./atoms";
 import Contact from "./Contact";
 import {
   defaultResumeState,
@@ -32,11 +32,26 @@ const PrintableWrapper = styled.div`
   }
 `;
 
-const Container = styled.div`
+const absurdStyle = css`
+  font-family: Comic Sans MS;
+  background-color: cyan;
+  a {
+    color: blue;
+    &:hover {
+      background-color: pink;
+    }
+  }
+  ${SkillBadge} {
+    background-color: antiquewhite;
+  }
+`;
+
+const Container = styled.div<ResumeState>`
   max-width: 800px;
   background-color: white;
   margin: 75px auto;
   padding: ${CONTAINER_PADDING.NORMAL};
+  ${({ toneOfVoice }) => toneOfVoice === "Absurd" && absurdStyle}
   ${boxShadow}
   ${getMobileCSS(css`
     max-width: 100%;
@@ -83,9 +98,7 @@ const Resume = () => {
   const { Modal, setIsModalActive } = useModal();
   useKeyListener("t", () =>
     dispatch(
-      setToneOfVoice(
-        state.toneOfVoice === "Laid-back" ? "Professional" : "Laid-back"
-      )
+      setToneOfVoice(state.toneOfVoice === "Absurd" ? "Professional" : "Absurd")
     )
   );
 
@@ -97,7 +110,7 @@ const Resume = () => {
       </Modal>
 
       <PrintableWrapper>
-        <Container id="container">
+        <Container id="container" {...state}>
           <h1>John Sloat</h1>
 
           <Contact />

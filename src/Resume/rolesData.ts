@@ -17,7 +17,7 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
         "Refactored & redesigned Backbone views in React. One of this project's goals was to remove a jQuery dependency that posed a security risk.",
         "Worked with customers to identify and fix performance issues in the app. In one case, reduced load time for a specific user from several minutes to a few seconds.",
       ],
-      "Laid-back": [
+      Absurd: [
         "Built a thing with some other people. Talked to non-devs, clicked things in Jira, coded, and coded more.",
         "Fixed some old founder code that was functional for longer than the technology it was written in.",
         "Helped users find browser dev tools.",
@@ -38,7 +38,7 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
         "Implemented the WSFJ prioritization model engineering-wide, used to categorize & prioritize user stories & bugs.",
         "Oversaw Summer dev internship program; defined the project, managed the backlog, and provided mentorship to 3 interns.",
       ],
-      "Laid-back": [
+      Absurd: [
         "Adjusted project deadlines and organized slightly depressing Zoom social events during COVID.",
         "Hosted Miro sessions where we drew boxes and tried to connect them to other boxes.",
         "Attempted to add even more red-tape and required fields to Jira.",
@@ -65,7 +65,7 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
               "Designed & created data pipeline, integrating metrics from our website, marketing channels, and product. Interviewed department heads to identify high-priority metrics.",
               "Organized & led quarterly hackathons.",
             ],
-            "Laid-back": [
+            Absurd: [
               "Made shiny charts that people pointed at in meetings.",
               "Harassed devs to contribute hackathon project ideas and handed out a miniature trophy.",
             ],
@@ -82,7 +82,7 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
               "Migrated website from WordPress to HubSpot.",
               "Built and maintained website, ran our SEO, SEM, and other digital marketing channels.",
             ],
-            "Laid-back": [
+            Absurd: [
               "Copied old, terrible PHP website code into an equally terrible new tool.",
               "Attempted to make a B2B SaaS tool sound exciting in 140 characters or less.",
             ],
@@ -103,7 +103,7 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
           summary: {
             Professional:
               "Delivered freelance marketing services to startups in Oslo, including strategy & measurement recommendations, & online marketing campaign implementation.",
-            "Laid-back":
+            Absurd:
               "Started a business in a foreign language, then abused family connections to take money from startups in exchange for managing their Adwords accounts.",
           },
         },
@@ -121,7 +121,7 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
           summary: {
             Professional:
               "Oversaw digital advertising budget, campaigns, & analysis. Helped design a metrics pipeline and attribution model for calculating ROI throughout the marketing funnel.",
-            "Laid-back":
+            Absurd:
               "Got taken out to dinner by ad vendors, looked at charts, made charts, presented charts.",
           },
         },
@@ -133,7 +133,7 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
           summary: {
             Professional:
               "Improved the evaluation experience for new Jira users. Managed drip-feed email campaigns, created video and written documentation, and monitored user metrics to identify areas for improvement.",
-            "Laid-back":
+            Absurd:
               "Made low-budget tutorial videos, distributed spam, and looked at charts.",
           },
           skills: ["Screenflow"],
@@ -149,7 +149,7 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
           start: "2005",
           end: "2009",
           locationStr: "Claremont, California",
-          summary: { Professional: [], "Laid-back": [] },
+          summary: { Professional: [], Absurd: [] },
         },
       ],
     },

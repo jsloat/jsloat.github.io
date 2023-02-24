@@ -1,8 +1,7 @@
-import React from "react";
 import { boxShadowPrefix, colors } from "src/consts";
 import styled from "styled-components/macro";
 
-const ButtonContainer = styled.div`
+const Button = styled.div`
   background-color: ${colors.blue[500]};
   display: inline-block;
   color: ${colors.slate[100]};
@@ -13,13 +12,10 @@ const ButtonContainer = styled.div`
   cursor: pointer;
   transition: all 0.3s;
   user-select: none;
+  text-align: center;
   &:hover {
     background-color: ${colors.blue[600]};
   }
 `;
 
-type ButtonProps = React.PropsWithChildren<{ onClick: () => any }>;
-
-export default ({ children, onClick }: ButtonProps) => (
-  <ButtonContainer onClick={onClick}>{children}</ButtonContainer>
-);
+export default Button;
