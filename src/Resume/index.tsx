@@ -33,7 +33,8 @@ const PrintableWrapper = styled.div`
 `;
 
 const absurdStyle = css`
-  font-family: Comic Sans MS;
+  font-family: "Comic Sans", "Comic Sans MS", "Chalkboard",
+    "ChalkboardSE-Regular", sans-serif;
   background-color: cyan;
   a {
     color: blue;
