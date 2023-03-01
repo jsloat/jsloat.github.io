@@ -25,8 +25,11 @@ const TextAndImgContainer = styled.div`
   gap: 7px;
   cursor: pointer;
   font-size: ${FONT_SIZE};
-  img {
+  > img {
     height: ${FONT_SIZE};
+  }
+  > * {
+    flex-shrink: 0;
   }
 `;
 
@@ -43,7 +46,7 @@ const ContactItem = ({ text, href, imageSrc }: ContactItemProps) => (
   <ContactItemAnchor href={href}>
     <TextAndImgContainer>
       {imageSrc && <img src={imageSrc} alt={href} />}
-      {text}
+      <span>{text}</span>
     </TextAndImgContainer>
   </ContactItemAnchor>
 );
