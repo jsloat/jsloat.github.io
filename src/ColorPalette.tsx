@@ -28,8 +28,8 @@ const CategoryContainer = styled.div`
 
 const ColorCard = styled.div<{ color: string }>`
   ${({ color }) => `background-color: ${color};`}
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   border: 1px solid white;
 `;
 
@@ -62,7 +62,6 @@ const ColorContainer = styled.div`
 
 const ColorsContainer = styled.div`
   display: flex;
-  gap: 20px;
   margin-top: 1em;
   flex-wrap: wrap;
 `;

@@ -2,12 +2,16 @@ import { createGlobalStyle, css } from "styled-components/macro";
 import { BASE_FONT_SIZE, colors } from "./consts";
 import { getMobileCSS } from "./Resume/atoms";
 
-export default createGlobalStyle`
-body {
-  margin: 0;
+export const defaultFontFamily = css`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+`;
+
+export default createGlobalStyle`
+body {
+  margin: 0;
+  ${defaultFontFamily}
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: ${BASE_FONT_SIZE};
@@ -58,11 +62,17 @@ h3 {
   }
 }
 
+h4 {
+  font-weight: 600;
+}
+
 a {
   color: ${colors.slate[900]};
   font-weight: 400
 }
 
-a:hover {
-}
+hr {
+    margin: 3em 0;
+    border-top: 1px solid ${colors.slate[100]};
+  }
 `;

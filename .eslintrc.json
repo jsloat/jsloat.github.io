@@ -42,7 +42,6 @@
     "dot-notation": ["error"],
     "eqeqeq": ["error"],
     "max-depth": ["error", 4],
-    "max-nested-callbacks": ["error", 2],
     "no-bitwise": ["error"],
     "no-extra-boolean-cast": ["error"],
     "no-implicit-coercion": ["error"],

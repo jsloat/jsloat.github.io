@@ -54,7 +54,6 @@ const ContactItem = ({ text, href, imageSrc }: ContactItemProps) => (
 const Contact = () => (
   <ContactContainer>
     <ContactItem text="jsloat1@gmail.com" href="mailto:jsloat1@gmail.com" />
-    <ContactItem text="(425) 500-3445" href="tel://+14255003445" />
     <ContactItem
       text="/ jsloat"
       href="https://www.linkedin.com/in/jsloat"

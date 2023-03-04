@@ -1,9 +1,10 @@
 import React, { useReducer } from "react";
-import { boxShadow, boxShadowPrefix, CONTAINER_PADDING } from "src/consts";
+import { BaseContainer } from "src/atoms/Misc";
+import { boxShadow, boxShadowPrefix } from "src/consts";
 import { useModal } from "src/Modal";
 import { useKeyListener, useTitle } from "src/utils";
 import styled, { css } from "styled-components/macro";
-import { getMobileCSS, SectionHeader, SkillBadge } from "./atoms";
+import { SectionHeader, SkillBadge } from "./atoms";
 import Contact from "./Contact";
 import {
   defaultResumeState,
@@ -47,18 +48,10 @@ const absurdStyle = css`
   }
 `;
 
-const Container = styled.div<ResumeState>`
-  max-width: 800px;
-  background-color: white;
+const ResumeContainer = styled(BaseContainer)<ResumeState>`
   margin: 75px auto;
-  padding: ${CONTAINER_PADDING.NORMAL};
   ${({ toneOfVoice }) => toneOfVoice === "Absurd" && absurdStyle}
   ${boxShadow}
-  ${getMobileCSS(css`
-    max-width: 100%;
-    margin: 0;
-    padding: ${CONTAINER_PADDING.MOBILE};
-  `)}
 `;
 
 const RolesContainer = styled.div`
@@ -111,7 +104,7 @@ const Resume = () => {
       </Modal>
 
       <PrintableWrapper>
-        <Container id="container" {...state}>
+        <ResumeContainer id="container" {...state}>
           <h1>John Sloat</h1>
 
           <Contact />
@@ -133,7 +126,7 @@ const Resume = () => {
               Github
             </a>
           </Source>
-        </Container>
+        </ResumeContainer>
       </PrintableWrapper>
     </ResumeContext.Provider>
   );
