@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.js": "/static/js/main.883b3bb2.js",
+    "main.js": "/static/js/main.9f228958.js",
     "static/media/settings.svg": "/static/media/settings.d607a3a1326d29ac878e9afe639d8150.svg",
     "static/media/RollupPluginForScriptableSettings.md": "/static/media/RollupPluginForScriptableSettings.310a6fe1ce574082255a.md",
-    "static/media/Introduction.md": "/static/media/Introduction.4a44be42904f30f198db.md",
+    "static/media/Introduction.md": "/static/media/Introduction.11a9de8e3f647abf6296.md",
     "static/media/SampleFiles.md": "/static/media/SampleFiles.4662bff96de8b42e7897.md",
     "static/media/InitializeCodebase.md": "/static/media/InitializeCodebase.5d60a6fdd25598f18334.md",
     "static/media/BuildScripts.md": "/static/media/BuildScripts.08f8cb500e046ca13f00.md",
@@ -12,14 +12,14 @@
     "static/media/SetUpTheDropboxDirectory.md": "/static/media/SetUpTheDropboxDirectory.f1b1d88c12be27ae7940.md",
     "static/media/Why.md": "/static/media/Why.e8d37cb14904d2c74f47.md",
     "static/media/mapPin.svg": "/static/media/mapPin.f881594387103a60c344138be066c696.svg",
+    "index.html": "/index.html",
     "static/media/github.svg": "/static/media/github.6fa18895f6e6c7772cab7049f7e05f59.svg",
     "static/media/website.svg": "/static/media/website.ae56f1c35ef7afb69d83ea4907f7c5ed.svg",
-    "index.html": "/index.html",
     "static/media/copy.svg": "/static/media/copy.e35eb1b192ef4ac74455c4a1deb372d7.svg",
     "static/media/checkmark.svg": "/static/media/checkmark.1ffa0b52a47b0cf58d8c829aba57aadf.svg",
-    "main.883b3bb2.js.map": "/static/js/main.883b3bb2.js.map"
+    "main.9f228958.js.map": "/static/js/main.9f228958.js.map"
   },
   "entrypoints": [
-    "static/js/main.883b3bb2.js"
+    "static/js/main.9f228958.js"
   ]
 }

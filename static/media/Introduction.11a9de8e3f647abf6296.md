@@ -1,6 +1,6 @@
 # Introduction
 
-[Scriptable](https://scriptable.app/) is a wonderful iOS/iPadOS app that provides a JavaScript IDE and access to system APIs like reminders, calendar, and notifications. Although it works great out-of-the-box, this set of guides will walk you through setting up a more mature environment that will enable you to quickly create interactive applications.
+[Scriptable](https://scriptable.app/) is an iOS/iPadOS app that provides a JavaScript IDE and access to system APIs like reminders, calendar, and notifications. Although it works great out-of-the-box, this set of guides will walk you through setting up a more mature environment that will enable you to quickly create interactive applications.
 
 | INFO: This guide assumes you're using a Mac. Most of the information is still relevant without it, but you will not be able to automatically sync your built Scriptable files via iCloud sync. |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -30,7 +30,7 @@ Instead, I now can have hundreds of TypeScript files, well organized and easy to
 
 I've spent a lot of time building [scriptable-utils](https://www.npmjs.com/package/scriptable-utils), which contains a bunch of utilities to make it easier to build interactive elements and use iOS API bridges in Scriptable.
 
-My development experience is primarily with React & RxJS; if you're familiar with these libraries, you'll notice a lot of inspiration taken from them.
+My development experience is primarily with React & RxJS; if you're familiar with these frameworks, you'll notice a lot of inspiration taken from them.
 
 Some examples:
 
