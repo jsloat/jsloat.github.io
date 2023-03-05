@@ -1,6 +1,6 @@
 # Introduction
 
-[Scriptable](https://scriptable.app/) is a wonderful iOS/iPadOS app that provides a JavaScript IDE and access to system APIs like reminders, calendar, and notifications. Although it works great out-of-the-box, this set of guides will walk you through setting up a more mature environment that will enable you to quickly create interactive applications.
+[Scriptable](https://scriptable.app/) is an iOS/iPadOS app that provides a JavaScript IDE and access to system APIs like reminders, calendar, and notifications. Although it works great out-of-the-box, this set of guides will walk you through setting up a more mature environment that will enable you to quickly create interactive applications.
 
 | INFO: This guide assumes you're using a Mac. Most of the information is still relevant without it, but you will not be able to automatically sync your built Scriptable files via iCloud sync. |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
