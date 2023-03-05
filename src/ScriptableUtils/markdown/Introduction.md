@@ -30,7 +30,7 @@ Instead, I now can have hundreds of TypeScript files, well organized and easy to
 
 I've spent a lot of time building [scriptable-utils](https://www.npmjs.com/package/scriptable-utils), which contains a bunch of utilities to make it easier to build interactive elements and use iOS API bridges in Scriptable.
 
-My development experience is primarily with React & RxJS; if you're familiar with these libraries, you'll notice a lot of inspiration taken from them.
+My development experience is primarily with React & RxJS; if you're familiar with these frameworks, you'll notice a lot of inspiration taken from them.
 
 Some examples:
 
