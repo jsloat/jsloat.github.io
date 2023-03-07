@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 import { RoleSummaryList, RoleSummaryText, SkillBadge } from "../atoms";
 import { useResumeContext } from "../ResumeContext";
 import { RoleObject } from "../types";
@@ -30,8 +30,25 @@ const Summary = ({ summary, title }: Pick<RoleObject, "summary" | "title">) => {
   );
 };
 
-const Role = ({ summary, skills, title, ...restProps }: RoleObject) => (
-  <div>
+const RoleContainer = styled.div<Pick<RoleObject, "isHalfWidth">>`
+  width: 100%;
+  flex-shrink: 0;
+  ${({ isHalfWidth }) =>
+    isHalfWidth &&
+    css`
+      width: 50%;
+      margin-top: 0.4em !important;
+    `};
+`;
+
+const Role = ({
+  summary,
+  skills,
+  title,
+  isHalfWidth,
+  ...restProps
+}: RoleObject) => (
+  <RoleContainer isHalfWidth={isHalfWidth}>
     <TitleRow title={title} {...restProps} />
     <Summary summary={summary} title={title} />
     {skills?.length && (
@@ -41,7 +58,7 @@ const Role = ({ summary, skills, title, ...restProps }: RoleObject) => (
         ))}
       </SkillsContainer>
     )}
-  </div>
+  </RoleContainer>
 );
 
 export default Role;

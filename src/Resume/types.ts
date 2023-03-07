@@ -10,9 +10,10 @@ export type RoleObject = {
   locationStr: string;
   summary: Record<ToneOfVoice, Summary>;
   skills?: string[];
+  isHalfWidth?: boolean;
 };
 
-export type SectionHeaderObject = { text: string; href?: string };
+export type SectionHeaderObject = { href?: string };
 
 export type ToneOfVoice = "Professional" | "Absurd";
 

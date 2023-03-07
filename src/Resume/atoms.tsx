@@ -15,8 +15,11 @@ const SectionHeaderContainer = styled.div`
   }
 `;
 
-export const SectionHeader = ({ text, href }: SectionHeaderObject) => {
-  const contents = <h2>{text}</h2>;
+export const SectionHeader = ({
+  children,
+  href,
+}: React.PropsWithChildren<SectionHeaderObject>) => {
+  const contents = <h2>{children}</h2>;
   return (
     <SectionHeaderContainer>
       {href ? <a href={href}>{contents}</a> : contents}

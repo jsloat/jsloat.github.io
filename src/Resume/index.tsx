@@ -11,7 +11,16 @@ import {
   toggleToneOfVoice,
 } from "./ResumeContext";
 import Role from "./Role";
-import getRolesData from "./rolesData";
+import {
+  ARDOQ_FE_ENGINEER,
+  ARDOQ_HEAD_MARKETING,
+  ARDOQ_SENIOR_FE,
+  ARDOQ_TEAM_LEAD,
+  ATLASSIAN_OMM,
+  ATLASSIAN_PMS,
+  EDUCATION,
+  SLOAT_MARKETING,
+} from "./rolesData";
 import ToneOfVoiceToggle from "./ToneOfVoiceToggle";
 import { ResumeState } from "./types";
 
@@ -109,16 +118,29 @@ const Resume = () => {
             <ToneOfVoiceToggle />
           </HideWhenPrinting>
 
-          {getRolesData().map(({ sectionHeader, roles }) => (
-            <React.Fragment key={sectionHeader.text}>
-              <SectionHeader {...sectionHeader} />
-              <RolesContainer>
-                {roles.map(role => (
-                  <Role {...role} key={role.title} />
-                ))}
-              </RolesContainer>
-            </React.Fragment>
-          ))}
+          <SectionHeader href="https://www.ardoq.com/">Ardoq</SectionHeader>
+          <RolesContainer>
+            <Role {...ARDOQ_SENIOR_FE} />
+            <Role {...ARDOQ_TEAM_LEAD} />
+            <Role {...ARDOQ_FE_ENGINEER} />
+            <Role {...ARDOQ_HEAD_MARKETING} />
+          </RolesContainer>
+
+          <SectionHeader>Sloat Marketing</SectionHeader>
+          <RolesContainer>
+            <Role {...SLOAT_MARKETING} />
+          </RolesContainer>
+
+          <SectionHeader href="https://www.atlassian.com/">
+            Atlassian
+          </SectionHeader>
+          <RolesContainer>
+            <Role {...ATLASSIAN_OMM} />
+            <Role {...ATLASSIAN_PMS} />
+          </RolesContainer>
+
+          <SectionHeader>Claremont McKenna College</SectionHeader>
+          <Role {...EDUCATION} />
 
           <HideWhenPrinting>
             <Source>
