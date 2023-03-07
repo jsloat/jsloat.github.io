@@ -1,11 +1,11 @@
-import { ResumeState, RoleObject, SectionHeaderObject } from "./types";
+import { RoleObject, SectionHeaderObject } from "./types";
 
 type RolesData = {
   sectionHeader: SectionHeaderObject;
   roles: RoleObject[];
 }[];
 
-const getRolesData = ({ targetRole }: ResumeState): RolesData => {
+const getRolesData = (): RolesData => {
   const currentRole: RoleObject = {
     title: "Senior Software Engineer",
     start: "Jul 2020",
@@ -52,9 +52,7 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
     {
       sectionHeader: { text: "Ardoq", href: "https://www.ardoq.com/" },
       roles: [
-        ...(targetRole === "Individual contributor"
-          ? [currentRole, teamLeadRole]
-          : [teamLeadRole, currentRole]),
+        ...[currentRole, teamLeadRole],
         {
           title: "Software Engineer",
           start: "Aug 2018",

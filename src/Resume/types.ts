@@ -14,11 +14,9 @@ export type RoleObject = {
 
 export type SectionHeaderObject = { text: string; href?: string };
 
-export type TargetRole = "Individual contributor" | "Team lead";
-
 export type ToneOfVoice = "Professional" | "Absurd";
 
-export type ResumeState = { targetRole: TargetRole; toneOfVoice: ToneOfVoice };
+export type ResumeState = { toneOfVoice: ToneOfVoice };
 
 export type ResumeContextType = {
   state: ResumeState;

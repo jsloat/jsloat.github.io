@@ -2,14 +2,9 @@ import React from "react";
 import Button from "src/atoms/Button";
 import Radio from "src/atoms/Radio";
 import { boxShadow } from "src/consts";
-import { isDevMode } from "src/utils";
 import styled from "styled-components/macro";
-import {
-  setTargetRole,
-  setToneOfVoice,
-  useResumeContext,
-} from "../ResumeContext";
-import { TargetRole, ToneOfVoice } from "../types";
+import { setToneOfVoice, useResumeContext } from "../ResumeContext";
+import { ToneOfVoice } from "../types";
 
 const Dialog = styled.div`
   border: 0;
@@ -48,7 +43,7 @@ type SettingsProps = { hideSettings: () => void };
 
 export const Settings = ({ hideSettings }: SettingsProps) => {
   const { state, dispatch } = useResumeContext();
-  const { toneOfVoice, targetRole } = state;
+  const { toneOfVoice } = state;
   return (
     <Dialog>
       <DialogContents>
@@ -64,24 +59,6 @@ export const Settings = ({ hideSettings }: SettingsProps) => {
             </Radio>
           ))}
         </Section>
-
-        {(isDevMode() || document.location.search.includes("edit")) && (
-          <Section>
-            <SectionHeader>Target role</SectionHeader>
-            {(["Individual contributor", "Team lead"] as TargetRole[]).map(
-              value => (
-                <Radio
-                  onClick={() => dispatch(setTargetRole(value))}
-                  isSelected={targetRole === value}
-                  key={value}
-                >
-                  {value}
-                </Radio>
-              )
-            )}
-          </Section>
-        )}
-
         <Footer>
           <DoneButton onClick={hideSettings}>Done</DoneButton>
         </Footer>

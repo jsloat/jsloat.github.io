@@ -109,7 +109,7 @@ const Resume = () => {
 
           <Contact />
 
-          {getRolesData(state).map(({ sectionHeader, roles }) => (
+          {getRolesData().map(({ sectionHeader, roles }) => (
             <React.Fragment key={sectionHeader.text}>
               <SectionHeader {...sectionHeader} />
               <RolesContainer>

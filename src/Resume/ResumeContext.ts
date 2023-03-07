@@ -1,10 +1,7 @@
 import React, { useContext } from "react";
 import { ResumeContextType, ResumeState } from "./types";
 
-export const defaultResumeState: ResumeState = {
-  targetRole: "Individual contributor",
-  toneOfVoice: "Professional",
-};
+export const defaultResumeState: ResumeState = { toneOfVoice: "Professional" };
 
 export const ResumeContext = React.createContext<ResumeContextType>({
   state: defaultResumeState,
@@ -20,5 +17,4 @@ const getStateAttrSetter =
   (val: ResumeState[K]): Identity<ResumeState> =>
   state => ({ ...state, [key]: val });
 
-export const setTargetRole = getStateAttrSetter("targetRole");
 export const setToneOfVoice = getStateAttrSetter("toneOfVoice");
