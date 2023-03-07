@@ -18,12 +18,12 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
         "Worked with customers to identify and fix performance issues in the app. In one case, reduced load time for a specific user from several minutes to a few seconds.",
       ],
       Absurd: [
-        "Built a thing with some other people. Talked to non-devs, clicked things in Jira, coded, and coded more.",
+        "Built a thing with some other people. Talked to non-devs, clicked things in Jira, and coded.",
         "Fixed some old founder code that was functional for longer than the technology it was written in.",
         "Helped users find browser dev tools.",
       ],
     },
-    skills: ["TypeScript", "RxJS", "React", "Backbone"],
+    skills: ["TypeScript", "RxJS", "React", "Backbone", "styled-components"],
   };
 
   const teamLeadRole: RoleObject = {
@@ -33,7 +33,7 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
     locationStr: "Norway",
     summary: {
       Professional: [
-        "Managed a team of 3 engineers until relocating to Seattle.",
+        "Managed a team of 3 engineers & 1 UX designer until relocating to Seattle.",
         "Led quarterly KPI review sessions within my team to design our key results, mapped to top-level company objectives.",
         "Implemented the WSFJ prioritization model engineering-wide, used to categorize & prioritize user stories & bugs.",
         "Oversaw Summer dev internship program; defined the project, managed the backlog, and provided mentorship to 3 interns.",
@@ -45,7 +45,7 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
         "Strove to convince interns that the project they worked on was exciting, while simultaneously teaching them JavaScript.",
       ],
     },
-    skills: ["TypeScript", "RxJS", "React"],
+    skills: ["TypeScript", "RxJS", "React", "styled-components"],
   };
 
   return [
@@ -62,7 +62,7 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
           locationStr: "Norway",
           summary: {
             Professional: [
-              "Designed & created data pipeline, integrating metrics from our website, marketing channels, and product. Interviewed department heads to identify high-priority metrics.",
+              "Designed & created data pipeline, integrating metrics from our website, marketing channels, and product. Collaborated with department heads to identify high-priority metrics.",
               "Organized & led quarterly hackathons.",
             ],
             Absurd: [
@@ -70,7 +70,14 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
               "Harassed devs to contribute hackathon project ideas and handed out a miniature trophy.",
             ],
           },
-          skills: ["PostgreSQL", "Cube.dev", "TypeScript", "RxJS", "React"],
+          skills: [
+            "PostgreSQL",
+            "Cube.dev",
+            "TypeScript",
+            "RxJS",
+            "React",
+            "styled-components",
+          ],
         },
         {
           title: "Head of Digital Marketing",
@@ -79,7 +86,8 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
           locationStr: "Norway",
           summary: {
             Professional: [
-              "Migrated website from WordPress to HubSpot.",
+              "Joined as #9, and have remained through our growth to over 200 employees.",
+              "Build landing pages & promoted numerous use cases, then helped focus our product-market fit.",
               "Built and maintained website, ran our SEO, SEM, and other digital marketing channels.",
             ],
             Absurd: [
@@ -87,7 +95,6 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
               "Attempted to make a B2B SaaS tool sound exciting in 140 characters or less.",
             ],
           },
-          skills: ["HubSpot", "Intercom"],
         },
       ],
     },
@@ -120,7 +127,7 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
           locationStr: "San Francisco & Amsterdam",
           summary: {
             Professional:
-              "Oversaw digital advertising budget, campaigns, & analysis. Helped design a metrics pipeline and attribution model for calculating ROI throughout the marketing funnel.",
+              "Oversaw digital advertising budget, campaigns, & analysis. Helped design a metrics pipeline and attribution model for calculating ROI throughout the marketing funnel. Performed A/B testing on ad copy and website content.",
             Absurd:
               "Got taken out to dinner by ad vendors, looked at charts, made charts, presented charts.",
           },
@@ -136,7 +143,6 @@ const getRolesData = ({ targetRole }: ResumeState): RolesData => {
             Absurd:
               "Made low-budget tutorial videos, distributed spam, and looked at charts.",
           },
-          skills: ["Screenflow"],
         },
       ],
     },
