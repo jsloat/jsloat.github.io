@@ -3,7 +3,7 @@ import { BaseContainer } from "src/atoms/Misc";
 import { boxShadow, boxShadowPrefix } from "src/consts";
 import { useKeyListener, useTitle } from "src/utils";
 import styled, { css } from "styled-components/macro";
-import { SectionHeader, SkillBadge } from "./atoms";
+import { getMobileCSS, SectionHeader, SkillBadge } from "./atoms";
 import Contact from "./Contact";
 import {
   defaultResumeState,
@@ -48,6 +48,11 @@ const absurdStyle = css`
 
 const ResumeContainer = styled(BaseContainer)<ResumeState>`
   margin: 75px auto;
+  ${getMobileCSS(
+    css`
+      margin: 0 auto;
+    `
+  )}
   ${({ toneOfVoice }) => toneOfVoice === "Absurd" && absurdStyle}
   ${boxShadow}
 `;
