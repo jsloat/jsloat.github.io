@@ -71,14 +71,17 @@ const RolesContainer = styled.div`
   }
 `;
 
+const HideWhenPrinting = styled.div`
+  @media print {
+    display: none;
+  }
+`;
+
 const Source = styled.div`
   font-size: 0.8em;
   font-style: italic;
   text-align: center;
   margin-top: 3em;
-  @media print {
-    display: none;
-  }
 `;
 
 const Resume = () => {
@@ -97,7 +100,9 @@ const Resume = () => {
 
           <Contact />
 
-          <ToneOfVoiceToggle />
+          <HideWhenPrinting>
+            <ToneOfVoiceToggle />
+          </HideWhenPrinting>
 
           {getRolesData().map(({ sectionHeader, roles }) => (
             <React.Fragment key={sectionHeader.text}>
@@ -110,12 +115,14 @@ const Resume = () => {
             </React.Fragment>
           ))}
 
-          <Source>
-            View résumé source on{" "}
-            <a href="https://github.com/jsloat/jsloat.github.io/tree/master/src/Resume">
-              Github
-            </a>
-          </Source>
+          <HideWhenPrinting>
+            <Source>
+              View résumé source on{" "}
+              <a href="https://github.com/jsloat/jsloat.github.io/tree/master/src/Resume">
+                Github
+              </a>
+            </Source>
+          </HideWhenPrinting>
         </ResumeContainer>
       </PrintableWrapper>
     </ResumeContext.Provider>
