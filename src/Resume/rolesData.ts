@@ -85,7 +85,7 @@ const getRolesData = (): RolesData => {
           summary: {
             Professional: [
               "Joined as #9, and have remained through our growth to over 200 employees.",
-              "Build landing pages & promoted numerous use cases, then helped focus our product-market fit.",
+              "Created landing pages & promoted numerous use cases, then helped focus our product-market fit.",
               "Built and maintained website, ran our SEO, SEM, and other digital marketing channels.",
             ],
             Absurd: [
