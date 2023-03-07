@@ -44,7 +44,7 @@ export const useModal = (): UseModalReturns => {
     setIsModalActive: setIsActiveWithSideEffects,
     Modal: ({ children }) => {
       if (!isModalActive) return null;
-      useKeyListener("Escape", () => setIsActiveWithSideEffects(false));
+      useKeyListener(["Escape"], () => setIsActiveWithSideEffects(false));
       return (
         <Backdrop onClick={() => setIsActiveWithSideEffects(false)}>
           <DialogClickShield onClick={e => e.stopPropagation()}>

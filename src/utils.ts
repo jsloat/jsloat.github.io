@@ -8,8 +8,8 @@ export const useTitle = (title: string) => {
 
 export const isDevMode = () => process.env.NODE_ENV === "development";
 
-export const useKeyListener = (key: string, onPress: () => any) => {
-  const callback = (e: KeyboardEvent) => e.key === key && onPress();
+export const useKeyListener = (keys: string[], onPress: () => any) => {
+  const callback = (e: KeyboardEvent) => keys.includes(e.key) && onPress();
   useEffect(() => {
     document.addEventListener("keydown", callback);
     return () => document.removeEventListener("keydown", callback);

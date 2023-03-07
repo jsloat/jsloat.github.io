@@ -89,8 +89,9 @@ const getRolesData = (): RolesData => {
               "Built and maintained website, ran our SEO, SEM, and other digital marketing channels.",
             ],
             Absurd: [
-              "Copied old, terrible PHP website code into an equally terrible new tool.",
+              "Outgrew office space 6 times.",
               "Attempted to make a B2B SaaS tool sound exciting in 140 characters or less.",
+              "Got paid to be on social media.",
             ],
           },
         },

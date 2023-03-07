@@ -1,7 +1,6 @@
 import React, { useReducer } from "react";
 import { BaseContainer } from "src/atoms/Misc";
 import { boxShadow, boxShadowPrefix } from "src/consts";
-import { useModal } from "src/Modal";
 import { useKeyListener, useTitle } from "src/utils";
 import styled, { css } from "styled-components/macro";
 import { SectionHeader, SkillBadge } from "./atoms";
@@ -9,12 +8,11 @@ import Contact from "./Contact";
 import {
   defaultResumeState,
   ResumeContext,
-  setToneOfVoice,
+  toggleToneOfVoice,
 } from "./ResumeContext";
 import Role from "./Role";
 import getRolesData from "./rolesData";
-import { Settings } from "./Settings/Settings";
-import { SettingsToggle } from "./Settings/SettingsToggle";
+import ToneOfVoiceToggle from "./ToneOfVoiceToggle";
 import { ResumeState } from "./types";
 
 const PrintableWrapper = styled.div`
@@ -89,25 +87,17 @@ const Resume = () => {
     defaultResumeState
   );
   useTitle("John Sloat's Résumé");
-  const { Modal, setIsModalActive } = useModal();
-  useKeyListener("t", () =>
-    dispatch(
-      setToneOfVoice(state.toneOfVoice === "Absurd" ? "Professional" : "Absurd")
-    )
-  );
+  useKeyListener(["t", "T"], () => dispatch(toggleToneOfVoice()));
 
   return (
     <ResumeContext.Provider value={{ state, dispatch }}>
-      <SettingsToggle showSettings={() => setIsModalActive(true)} />
-      <Modal>
-        <Settings hideSettings={() => setIsModalActive(false)} />
-      </Modal>
-
       <PrintableWrapper>
         <ResumeContainer id="container" {...state}>
           <h1>John Sloat</h1>
 
           <Contact />
+
+          <ToneOfVoiceToggle />
 
           {getRolesData().map(({ sectionHeader, roles }) => (
             <React.Fragment key={sectionHeader.text}>

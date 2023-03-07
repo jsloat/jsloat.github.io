@@ -12,9 +12,7 @@ export const useResumeContext = () => useContext(ResumeContext);
 
 //
 
-const getStateAttrSetter =
-  <K extends keyof ResumeState>(key: K) =>
-  (val: ResumeState[K]): Identity<ResumeState> =>
-  state => ({ ...state, [key]: val });
-
-export const setToneOfVoice = getStateAttrSetter("toneOfVoice");
+export const toggleToneOfVoice = (): Identity<ResumeState> => state => ({
+  ...state,
+  toneOfVoice: state.toneOfVoice === "Absurd" ? "Professional" : "Absurd",
+});
