@@ -40,10 +40,11 @@ export default () => {
     state: { toneOfVoice },
     dispatch,
   } = useResumeContext();
+  const question = toneOfVoice === "Absurd" ? "Eyes bleeding" : "Bored";
   return (
     <ToggleContainer onClick={() => dispatch(toggleToneOfVoice())}>
       <TopRowContainer>
-        <Title>Bored? Try a new tone of voice.</Title>
+        <Title>{`${question}? Try a new tone of voice.`}</Title>
         <KeyboardShortcut>T</KeyboardShortcut>
       </TopRowContainer>
       <Toggle
