@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/static/js/main.c93b2be4.js",
+    "main.js": "/static/js/main.246b556c.js",
     "static/media/RollupPluginForScriptableSettings.md": "/static/media/RollupPluginForScriptableSettings.310a6fe1ce574082255a.md",
     "static/media/Introduction.md": "/static/media/Introduction.11a9de8e3f647abf6296.md",
     "static/media/SampleFiles.md": "/static/media/SampleFiles.4662bff96de8b42e7897.md",
@@ -13,12 +13,13 @@
     "static/media/mapPin.svg": "/static/media/mapPin.f881594387103a60c344138be066c696.svg",
     "index.html": "/index.html",
     "static/media/github.svg": "/static/media/github.6fa18895f6e6c7772cab7049f7e05f59.svg",
+    "static/media/open-external.svg": "/static/media/open-external.20f2d6d546e0fadbd6bb9ec54eee7bc2.svg",
     "static/media/website.svg": "/static/media/website.ae56f1c35ef7afb69d83ea4907f7c5ed.svg",
     "static/media/copy.svg": "/static/media/copy.e35eb1b192ef4ac74455c4a1deb372d7.svg",
     "static/media/checkmark.svg": "/static/media/checkmark.1ffa0b52a47b0cf58d8c829aba57aadf.svg",
-    "main.c93b2be4.js.map": "/static/js/main.c93b2be4.js.map"
+    "main.246b556c.js.map": "/static/js/main.246b556c.js.map"
   },
   "entrypoints": [
-    "static/js/main.c93b2be4.js"
+    "static/js/main.246b556c.js"
   ]
 }
