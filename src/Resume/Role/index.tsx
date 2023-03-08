@@ -1,5 +1,6 @@
 import React from "react";
-import styled, { css } from "styled-components/macro";
+import { isString } from "src/utils";
+import styled from "styled-components/macro";
 import { RoleSummaryList, RoleSummaryText, SkillBadge } from "../atoms";
 import { useResumeContext } from "../ResumeContext";
 import { RoleObject } from "../types";
@@ -18,37 +19,28 @@ const SkillsContainer = styled.div`
 const Summary = ({ summary, title }: Pick<RoleObject, "summary" | "title">) => {
   const { state } = useResumeContext();
   const visibleSummary = summary[state.toneOfVoice];
-  if (!Array.isArray(visibleSummary)) {
+  if (isString(visibleSummary)) {
     return <RoleSummaryText>{visibleSummary}</RoleSummaryText>;
   }
-  return (
-    <RoleSummaryList>
-      {visibleSummary.map((item, i) => (
-        <li key={`roleSummaryList_${title}_${i}`}>{item}</li>
-      ))}
-    </RoleSummaryList>
-  );
+  if (Array.isArray(visibleSummary)) {
+    return (
+      <RoleSummaryList>
+        {visibleSummary.map((item, i) => (
+          <li key={`roleSummaryList_${title}_${i}`}>{item}</li>
+        ))}
+      </RoleSummaryList>
+    );
+  }
+  return visibleSummary;
 };
 
-const RoleContainer = styled.div<Pick<RoleObject, "isHalfWidth">>`
+const RoleContainer = styled.div`
   width: 100%;
   flex-shrink: 0;
-  ${({ isHalfWidth }) =>
-    isHalfWidth &&
-    css`
-      width: 50%;
-      margin-top: 0.4em !important;
-    `};
 `;
 
-const Role = ({
-  summary,
-  skills,
-  title,
-  isHalfWidth,
-  ...restProps
-}: RoleObject) => (
-  <RoleContainer isHalfWidth={isHalfWidth}>
+const Role = ({ summary, skills, title, ...restProps }: RoleObject) => (
+  <RoleContainer>
     <TitleRow title={title} {...restProps} />
     <Summary summary={summary} title={title} />
     {skills?.length && (

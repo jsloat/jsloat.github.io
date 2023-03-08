@@ -68,7 +68,7 @@ h4 {
 
 a {
   color: ${colors.slate[900]};
-  font-weight: 400
+  font-weight: 400;
 }
 
 hr {

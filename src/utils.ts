@@ -18,3 +18,6 @@ export const useKeyListener = (keys: string[], onPress: () => any) => {
 
 export const capitalize = (str: string) =>
   str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();
+
+export const isString = (val: any): val is string =>
+  typeof val === "string" || val instanceof String;

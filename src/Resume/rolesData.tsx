@@ -1,3 +1,5 @@
+import React from "react";
+import styled from "styled-components/macro";
 import { RoleObject } from "./types";
 
 export const ARDOQ_SENIOR_FE: RoleObject = {
@@ -74,7 +76,7 @@ export const ARDOQ_HEAD_MARKETING: RoleObject = {
   locationStr: "Norway",
   summary: {
     Professional: [
-      "Joined as #9, and have remained through our growth to over 200 employees.",
+      "Joined as #9, and have remained through our growth to over 200 employees with offices in 4 countries.",
       "Created landing pages & promoted numerous use cases, then helped focus our product-market fit.",
       "Built and maintained website, ran our SEO, SEM, and other digital marketing channels.",
     ],
@@ -106,11 +108,10 @@ export const ATLASSIAN_OMM: RoleObject = {
   locationStr: "San Francisco & Amsterdam",
   summary: {
     Professional:
-      "Oversaw digital advertising budget, campaigns, & analysis. Helped design a metrics pipeline and attribution model for calculating ROI throughout the marketing funnel. Performed A/B testing on ad copy and website content.",
+      "Oversaw digital advertising budget, campaigns, & analysis. Helped design a metrics pipeline and attribution model for calculating ROI throughout marketing funnel. Performed A/B testing on ad copy and website content.",
     Absurd:
       "Got taken out to dinner by ad vendors, looked at charts, made charts, presented charts.",
   },
-  isHalfWidth: true,
 };
 
 export const ATLASSIAN_PMS: RoleObject = {
@@ -124,13 +125,42 @@ export const ATLASSIAN_PMS: RoleObject = {
     Absurd:
       "Made low-budget tutorial videos, distributed spam, and looked at charts.",
   },
-  isHalfWidth: true,
 };
 
 export const EDUCATION: RoleObject = {
-  title: "Bachelor of Arts, Computer Science",
+  title: "Claremont McKenna College",
   start: "2005",
   end: "2009",
   locationStr: "Claremont, California",
-  summary: { Professional: [], Absurd: [] },
+  summary: {
+    Professional: "Bachelor of Arts, Computer Science",
+    Absurd: "Schmachelor of Arts, Compooter Science",
+  },
+};
+
+const PersonalProjectWrapper = styled.div`
+  p:first-child {
+    margin-top: 0;
+  }
+`;
+
+export const PERSONAL_PROJECTS: RoleObject = {
+  title: "scriptable-utils",
+  titleHref: "/#/scriptable-utils",
+  summary: {
+    Absurd: [],
+    Professional: (
+      <PersonalProjectWrapper>
+        <p>
+          TypeScript development flow for more robust development on the iOS app
+          Scriptable, with suite of API wrappers and interactive, stateful UX
+          elements and utils.
+        </p>
+        <p>
+          Documented at{" "}
+          <a href="/#/scriptable-utils">sloat.life/#/scriptable-utils</a>
+        </p>
+      </PersonalProjectWrapper>
+    ),
+  },
 };

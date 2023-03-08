@@ -2,6 +2,7 @@ import React from "react";
 import Toggle from "src/atoms/Toggle";
 import { boxShadowPrefix, colors } from "src/consts";
 import styled from "styled-components/macro";
+import { HideWhenPrinting } from "./atoms";
 import { toggleToneOfVoice, useResumeContext } from "./ResumeContext";
 
 const ToggleContainer = styled.div`
@@ -42,17 +43,22 @@ export default () => {
   } = useResumeContext();
   const question = toneOfVoice === "Absurd" ? "Eyes bleeding" : "Bored";
   return (
-    <ToggleContainer onClick={() => dispatch(toggleToneOfVoice())}>
-      <TopRowContainer>
-        <Title>{`${question}? Try a new tone of voice.`}</Title>
-        <KeyboardShortcut>T</KeyboardShortcut>
-      </TopRowContainer>
-      <Toggle
-        options={[
-          { label: "Professional", isSelected: toneOfVoice === "Professional" },
-          { label: "Absurd", isSelected: toneOfVoice === "Absurd" },
-        ]}
-      />
-    </ToggleContainer>
+    <HideWhenPrinting>
+      <ToggleContainer onClick={() => dispatch(toggleToneOfVoice())}>
+        <TopRowContainer>
+          <Title>{`${question}? Try a new tone of voice.`}</Title>
+          <KeyboardShortcut>T</KeyboardShortcut>
+        </TopRowContainer>
+        <Toggle
+          options={[
+            {
+              label: "Professional",
+              isSelected: toneOfVoice === "Professional",
+            },
+            { label: "Absurd", isSelected: toneOfVoice === "Absurd" },
+          ]}
+        />
+      </ToggleContainer>
+    </HideWhenPrinting>
   );
 };

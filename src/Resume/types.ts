@@ -1,16 +1,16 @@
 import React from "react";
 
 /** If `string[]`, render as unordered list. */
-type Summary = string | string[];
+type Summary = string | (string | JSX.Element)[] | JSX.Element;
 
 export type RoleObject = {
   title: string;
-  start: string;
-  end: string;
-  locationStr: string;
+  titleHref?: string;
+  start?: string;
+  end?: string;
+  locationStr?: string;
   summary: Record<ToneOfVoice, Summary>;
   skills?: string[];
-  isHalfWidth?: boolean;
 };
 
 export type SectionHeaderObject = { href?: string };

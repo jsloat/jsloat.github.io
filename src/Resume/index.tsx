@@ -3,7 +3,7 @@ import { BaseContainer } from "src/atoms/Misc";
 import { boxShadow, boxShadowPrefix } from "src/consts";
 import { useKeyListener, useTitle } from "src/utils";
 import styled, { css } from "styled-components/macro";
-import { getMobileCSS, SectionHeader, SkillBadge } from "./atoms";
+import { getMobileCSS, ResumeSource, SectionHeader, SkillBadge } from "./atoms";
 import Contact from "./Contact";
 import {
   defaultResumeState,
@@ -19,6 +19,7 @@ import {
   ATLASSIAN_OMM,
   ATLASSIAN_PMS,
   EDUCATION,
+  PERSONAL_PROJECTS,
   SLOAT_MARKETING,
 } from "./rolesData";
 import ToneOfVoiceToggle from "./ToneOfVoiceToggle";
@@ -31,7 +32,7 @@ const PrintableWrapper = styled.div`
   }
   @media print {
     #container {
-      font-size: 12px;
+      font-size: 11.5px;
       padding: 0.25in 0.5in;
       margin: 0;
       ${boxShadowPrefix("none")}
@@ -76,26 +77,22 @@ const RolesContainer = styled.div`
       margin-top: 1.5em;
     }
   }
-  @media print {
-    > * {
-      :not(:first-child) {
-        margin-top: 0.9em;
-      }
-    }
-  }
 `;
 
-const HideWhenPrinting = styled.div`
-  @media print {
-    display: none;
+const HalfWidthRolesContainer = styled.div`
+  display: flex;
+  gap: 1em;
+  ${getMobileCSS(
+    css`
+      flex-wrap: wrap;
+    `
+  )}
+  > div {
+    width: 50%;
+    ${getMobileCSS(css`
+      width: 100%;
+    `)}
   }
-`;
-
-const Source = styled.div`
-  font-size: 0.8em;
-  font-style: italic;
-  text-align: center;
-  margin-top: 3em;
 `;
 
 const Resume = () => {
@@ -111,12 +108,8 @@ const Resume = () => {
       <PrintableWrapper>
         <ResumeContainer id="container" {...state}>
           <h1>John Sloat</h1>
-
           <Contact />
-
-          <HideWhenPrinting>
-            <ToneOfVoiceToggle />
-          </HideWhenPrinting>
+          <ToneOfVoiceToggle />
 
           <SectionHeader href="https://www.ardoq.com/">Ardoq</SectionHeader>
           <RolesContainer>
@@ -135,21 +128,21 @@ const Resume = () => {
             Atlassian
           </SectionHeader>
           <RolesContainer>
-            <Role {...ATLASSIAN_OMM} />
-            <Role {...ATLASSIAN_PMS} />
+            <HalfWidthRolesContainer>
+              <Role {...ATLASSIAN_OMM} />
+              <Role {...ATLASSIAN_PMS} />
+            </HalfWidthRolesContainer>
           </RolesContainer>
 
-          <SectionHeader>Claremont McKenna College</SectionHeader>
-          <Role {...EDUCATION} />
+          <SectionHeader>Education & Personal Projects</SectionHeader>
+          <RolesContainer>
+            <HalfWidthRolesContainer>
+              <Role {...EDUCATION} />
+              <Role {...PERSONAL_PROJECTS} />
+            </HalfWidthRolesContainer>
+          </RolesContainer>
 
-          <HideWhenPrinting>
-            <Source>
-              View résumé source on{" "}
-              <a href="https://github.com/jsloat/jsloat.github.io/tree/master/src/Resume">
-                Github
-              </a>
-            </Source>
-          </HideWhenPrinting>
+          <ResumeSource />
         </ResumeContainer>
       </PrintableWrapper>
     </ResumeContext.Provider>

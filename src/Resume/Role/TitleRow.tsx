@@ -3,10 +3,11 @@ import { colors } from "src/consts";
 import styled from "styled-components/macro";
 import { RoleObject } from "../types";
 import mapPin from "../../assets/mapPin.svg";
+import { WithExternalUrlIcon } from "../atoms";
 
 type TitleRowProps = Pick<
   RoleObject,
-  "title" | "locationStr" | "start" | "end"
+  "title" | "locationStr" | "start" | "end" | "titleHref"
 >;
 
 const FlexDiv = styled.div`
@@ -14,7 +15,14 @@ const FlexDiv = styled.div`
   align-items: center;
 `;
 
-const Title = ({ title }: TitleRowProps) => <h3>{title}</h3>;
+const Title = ({ title, titleHref }: TitleRowProps) =>
+  titleHref ? (
+    <WithExternalUrlIcon href={titleHref}>
+      <h3>{title}</h3>
+    </WithExternalUrlIcon>
+  ) : (
+    <h3>{title}</h3>
+  );
 
 const LocationContainer = styled(FlexDiv)`
   color: ${colors.slate[600]};
@@ -52,10 +60,12 @@ const WhenWhere = styled(FlexDiv)`
 const TitleRow = (props: TitleRowProps) => (
   <div>
     <Title {...props} />
-    <WhenWhere>
-      <DateRange {...props} />
-      <Location {...props} />
-    </WhenWhere>
+    {props.start && props.locationStr && (
+      <WhenWhere>
+        <DateRange {...props} />
+        <Location {...props} />
+      </WhenWhere>
+    )}
   </div>
 );
 
