@@ -2,7 +2,7 @@ import { marked } from "marked";
 import React from "react";
 import { colors } from "src/consts";
 import { defaultFontFamily } from "src/GlobalStyle";
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 import { useFetchMarkdown } from "./utils";
 import { useLocation } from "react-router-dom";
 import { useTitle } from "src/utils";
@@ -17,9 +17,15 @@ import {
 import Sidebar from "./Sidebar";
 import useCustomizeMarkdownGeneratedHTML from "./useCustomizeMarkdownGeneratedHTML";
 import { findScriptableRoute } from "./routeMetadata";
+import { getMobileCSS } from "src/Resume/atoms";
 
 const Container = styled.div`
   padding: 1em 0 0;
+  ${getMobileCSS(
+    css`
+      padding: 0;
+    `
+  )}
   width: 100%;
   strong {
     font-weight: 500;
@@ -115,6 +121,12 @@ const GetHelpFooter = styled.div`
   text-align: center;
 `;
 
+const MobileWarningBanner = styled.div`
+  background-color: ${colors.amber[400]};
+  text-align: center;
+  padding: 1em;
+`;
+
 const useScriptableTitle = (routePath: string) => {
   const matchingRoute = findScriptableRoute(routePath);
   const title = [matchingRoute?.label, "Scriptable Utils"]
@@ -130,24 +142,31 @@ export default () => {
   useScriptableTitle(routePath);
 
   return (
-    <Container>
-      <PageContainer>
-        <Sidebar routePath={routePath} />
-        <ContentContainer>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: marked.parse(markdown),
-            }}
-          />
-        </ContentContainer>
-      </PageContainer>
-      <GetHelpFooter>
-        Have a question, or is something not working?{" "}
-        <a href="https://github.com/jsloat/jsloat.github.io/issues/new">
-          File a GitHub issue
-        </a>
-        .
-      </GetHelpFooter>
-    </Container>
+    <>
+      {window.innerWidth < 650 && (
+        <MobileWarningBanner>
+          Sorry, I haven't added responsive support yet.
+        </MobileWarningBanner>
+      )}
+      <Container>
+        <PageContainer>
+          <Sidebar routePath={routePath} />
+          <ContentContainer>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: marked.parse(markdown),
+              }}
+            />
+          </ContentContainer>
+        </PageContainer>
+        <GetHelpFooter>
+          Have a question, or is something not working?{" "}
+          <a href="https://github.com/jsloat/jsloat.github.io/issues/new">
+            File a GitHub issue
+          </a>
+          .
+        </GetHelpFooter>
+      </Container>
+    </>
   );
 };
