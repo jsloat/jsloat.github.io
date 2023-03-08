@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { RoleObject } from "./types";
+import { RoleObject, ToneOfVoice } from "./types";
 
 export const ARDOQ_SENIOR_FE: RoleObject = {
   title: "Senior Software Engineer",
@@ -144,23 +144,33 @@ const PersonalProjectWrapper = styled.div`
   }
 `;
 
+const ScriptableUtilsRoleSummary = ({
+  toneOfVoice,
+}: {
+  toneOfVoice: ToneOfVoice;
+}) => {
+  const description =
+    toneOfVoice === "Professional"
+      ? `TypeScript development flow for more robust development on the iOS app
+  Scriptable, with suite of API wrappers and interactive, stateful UX
+  elements and utils.`
+      : "Wrapped iOS wrappers in wrappers for wrapped-up wrappers, in TypeScript.";
+  return (
+    <PersonalProjectWrapper>
+      <p>{description}</p>
+      <p>
+        Documented at{" "}
+        <a href="/#/scriptable-utils">sloat.life/#/scriptable-utils</a>
+      </p>
+    </PersonalProjectWrapper>
+  );
+};
+
 export const PERSONAL_PROJECTS: RoleObject = {
   title: "scriptable-utils",
   titleHref: "/#/scriptable-utils",
   summary: {
-    Absurd: [],
-    Professional: (
-      <PersonalProjectWrapper>
-        <p>
-          TypeScript development flow for more robust development on the iOS app
-          Scriptable, with suite of API wrappers and interactive, stateful UX
-          elements and utils.
-        </p>
-        <p>
-          Documented at{" "}
-          <a href="/#/scriptable-utils">sloat.life/#/scriptable-utils</a>
-        </p>
-      </PersonalProjectWrapper>
-    ),
+    Absurd: <ScriptableUtilsRoleSummary toneOfVoice="Absurd" />,
+    Professional: <ScriptableUtilsRoleSummary toneOfVoice="Professional" />,
   },
 };
