@@ -73,11 +73,20 @@ const LinkedNavItem = ({ route, routePath }: LinkedNavItemProps) => (
   </Link>
 );
 
-const NavContent = ({ routePath }: SidebarProps) => (
-  <>
+const SidebarDivider = styled.hr`
+  margin: 1em 0;
+`;
+
+export default ({ routePath }: SidebarProps) => (
+  <Sidebar>
     {routeMetadata.map(({ sectionHeader, routes }, i) => (
       <React.Fragment key={`nav_${i}`}>
-        {sectionHeader && <NavSection>{sectionHeader}</NavSection>}
+        {sectionHeader && (
+          <>
+            <SidebarDivider />
+            <NavSection>{sectionHeader}</NavSection>
+          </>
+        )}
         {routes.map((route, j) => (
           <LinkedNavItem
             route={route}
@@ -87,11 +96,5 @@ const NavContent = ({ routePath }: SidebarProps) => (
         ))}
       </React.Fragment>
     ))}
-  </>
-);
-
-export default ({ routePath }: SidebarProps) => (
-  <Sidebar>
-    <NavContent routePath={routePath} />
   </Sidebar>
 );

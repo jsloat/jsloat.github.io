@@ -3,7 +3,7 @@ import React from "react";
 import { colors } from "src/consts";
 import { defaultFontFamily } from "src/GlobalStyle";
 import styled, { css } from "styled-components/macro";
-import { useFetchMarkdown } from "./utils";
+import { getScriptableMobileCSS, useFetchMarkdown } from "./utils";
 import { useLocation } from "react-router-dom";
 import { useTitle } from "src/utils";
 import {
@@ -17,11 +17,10 @@ import {
 import Sidebar from "./Sidebar";
 import useCustomizeMarkdownGeneratedHTML from "./useCustomizeMarkdownGeneratedHTML";
 import { findScriptableRoute } from "./routeMetadata";
-import { getMobileCSS } from "src/Resume/atoms";
 
 const Container = styled.div`
   padding: 1em 0 0;
-  ${getMobileCSS(
+  ${getScriptableMobileCSS(
     css`
       padding: 0;
     `

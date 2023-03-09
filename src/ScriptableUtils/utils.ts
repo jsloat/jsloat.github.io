@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { css, FlattenSimpleInterpolation } from "styled-components/macro";
 import { findScriptableRoute } from "./routeMetadata";
 
 export const isRootScriptablePath = (routePath: string) =>
@@ -25,3 +26,11 @@ export const useFetchMarkdown = (routePath: string) => {
   });
   return markdown;
 };
+
+export const getScriptableMobileCSS = (
+  style: FlattenSimpleInterpolation
+) => css`
+  @media screen and (max-width: 1180px) {
+    ${style}
+  }
+`;

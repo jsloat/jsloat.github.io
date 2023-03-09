@@ -6,6 +6,7 @@ import RollupPluginForScriptableSettings from "./markdown/setup/RollupPluginForS
 import RollupConfiguration from "./markdown/setup/RollupConfiguration.md";
 import BuildScripts from "./markdown/setup/BuildScripts.md";
 import SampleFiles from "./markdown/setup/SampleFiles.md";
+import Placeholder from "./markdown/Placeholder.md";
 import { isRootScriptablePath } from "./utils";
 
 export type ScriptableRoute = {
@@ -73,6 +74,58 @@ const routeMetadata: RouteMetadata[] = [
         routePath: pathPrefix("setup/sample-files"),
       },
     ],
+  },
+
+  {
+    sectionHeader: "Core concepts",
+    routes: [
+      {
+        label: '"Streams"',
+        markdownPath: Placeholder,
+        routePath: pathPrefix("core-concepts/streams"),
+      },
+      {
+        label: "SFIcon tinting, preloading, & caching",
+        markdownPath: Placeholder,
+        routePath: pathPrefix("core-concepts/sf-icons"),
+      },
+      {
+        label: "getTable & UITable wrapper",
+        markdownPath: Placeholder,
+        routePath: pathPrefix("core-concepts/uitable"),
+      },
+    ],
+  },
+
+  {
+    sectionHeader: "Useful utilities",
+    routes: [
+      {
+        label: "Transducers",
+        markdownPath: Placeholder,
+        routePath: pathPrefix("useful-utils/transducers"),
+      },
+      {
+        label: "Input modes",
+        markdownPath: Placeholder,
+        routePath: pathPrefix("useful-utils/input-modes"),
+      },
+      {
+        label: "Config register",
+        markdownPath: Placeholder,
+        routePath: pathPrefix("useful-utils/config-register"),
+      },
+      {
+        label: "File system interface",
+        markdownPath: Placeholder,
+        routePath: pathPrefix("useful-utils/file-system"),
+      },
+    ],
+  },
+
+  {
+    sectionHeader: "Examples",
+    routes: [],
   },
 ];
 
