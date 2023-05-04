@@ -21,6 +21,7 @@ import {
   EDUCATION,
   PERSONAL_PROJECTS,
   SLOAT_MARKETING,
+  TRUVETA_SENIOR_FE,
 } from "./rolesData";
 import ToneOfVoiceToggle from "./ToneOfVoiceToggle";
 import { ResumeState } from "./types";
@@ -110,6 +111,11 @@ const Resume = () => {
           <h1>John Sloat</h1>
           <Contact />
           <ToneOfVoiceToggle />
+
+          <SectionHeader href="https://www.truveta.com">Truveta</SectionHeader>
+          <RolesContainer>
+            <Role {...TRUVETA_SENIOR_FE} />
+          </RolesContainer>
 
           <SectionHeader href="https://www.ardoq.com/">Ardoq</SectionHeader>
           <RolesContainer>

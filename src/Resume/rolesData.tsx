@@ -2,10 +2,17 @@ import React from "react";
 import styled from "styled-components/macro";
 import { RoleObject, ToneOfVoice } from "./types";
 
+export const TRUVETA_SENIOR_FE: RoleObject = {
+  title: "Senior Software Engineer",
+  start: "May 2023",
+  locationStr: "Seattle",
+  summary: { Professional: "", Absurd: "" },
+};
+
 export const ARDOQ_SENIOR_FE: RoleObject = {
   title: "Senior Software Engineer",
   start: "Jul 2020",
-  end: "Present",
+  end: "May 2023",
   locationStr: "Norway & Seattle",
   summary: {
     Professional: [
