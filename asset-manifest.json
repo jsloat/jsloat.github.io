@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/static/js/main.ddf838ae.js",
+    "main.js": "/static/js/main.44e1d41b.js",
     "static/media/RollupPluginForScriptableSettings.md": "/static/media/RollupPluginForScriptableSettings.310a6fe1ce574082255a.md",
     "static/media/Introduction.md": "/static/media/Introduction.11a9de8e3f647abf6296.md",
     "static/media/SampleFiles.md": "/static/media/SampleFiles.4662bff96de8b42e7897.md",
@@ -18,9 +18,9 @@
     "static/media/copy.svg": "/static/media/copy.e35eb1b192ef4ac74455c4a1deb372d7.svg",
     "static/media/checkmark.svg": "/static/media/checkmark.1ffa0b52a47b0cf58d8c829aba57aadf.svg",
     "static/media/Placeholder.md": "/static/media/Placeholder.4f83db6c2de87c07e52a.md",
-    "main.ddf838ae.js.map": "/static/js/main.ddf838ae.js.map"
+    "main.44e1d41b.js.map": "/static/js/main.44e1d41b.js.map"
   },
   "entrypoints": [
-    "static/js/main.ddf838ae.js"
+    "static/js/main.44e1d41b.js"
   ]
 }
