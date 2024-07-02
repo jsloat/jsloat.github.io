@@ -45,7 +45,7 @@ const DateRangeContainer = styled(FlexDiv)`
 `;
 const DateRange = ({ start, end }: TitleRowProps) => (
   <DateRangeContainer>
-    {start} – {end}
+    {start} – {end ?? 'Present'}
   </DateRangeContainer>
 );
 

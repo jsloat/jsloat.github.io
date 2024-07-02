@@ -1,7 +1,12 @@
 import React from "react";
 
-/** If `string[]`, render as unordered list. */
-type Summary = string | (string | JSX.Element)[] | JSX.Element;
+type SummaryContent = string | JSX.Element;
+
+/** If content = `string[]`, render as unordered list. */
+type Summary = (
+  | { content: SummaryContent; hideWhenPrinting?: boolean }
+  | Falsy
+)[];
 
 export type RoleObject = {
   title: string;

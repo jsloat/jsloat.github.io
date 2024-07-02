@@ -2,8 +2,8 @@ import React from "react";
 import Toggle from "src/atoms/Toggle";
 import { boxShadowPrefix, colors } from "src/consts";
 import styled from "styled-components/macro";
-import { HideWhenPrinting } from "./atoms";
 import { toggleToneOfVoice, useResumeContext } from "./ResumeContext";
+import { HideWhenPrinting } from "src/atoms";
 
 const ToggleContainer = styled.div`
   border: 2px solid ${colors.slate[300]};

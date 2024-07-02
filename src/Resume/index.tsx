@@ -25,17 +25,12 @@ import {
 } from "./rolesData";
 import ToneOfVoiceToggle from "./ToneOfVoiceToggle";
 import { ResumeState } from "./types";
+import { PrintableWrapper } from "src/atoms";
 
-const PrintableWrapper = styled.div`
-  @page {
-    size: auto;
-    margin: 0;
-  }
+const PrintableResumeWrapper = styled(PrintableWrapper)`
   @media print {
     #container {
       font-size: 11.5px;
-      padding: 0.25in 0.5in;
-      margin: 0;
       ${boxShadowPrefix("none")}
       line-height: 1.4em;
     }
@@ -106,7 +101,7 @@ const Resume = () => {
 
   return (
     <ResumeContext.Provider value={{ state, dispatch }}>
-      <PrintableWrapper>
+      <PrintableResumeWrapper>
         <ResumeContainer id="container" {...state}>
           <h1>John Sloat</h1>
           <Contact />
@@ -150,7 +145,7 @@ const Resume = () => {
 
           <ResumeSource />
         </ResumeContainer>
-      </PrintableWrapper>
+      </PrintableResumeWrapper>
     </ResumeContext.Provider>
   );
 };

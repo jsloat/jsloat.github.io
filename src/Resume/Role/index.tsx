@@ -1,10 +1,11 @@
 import React from "react";
-import { isString } from "src/utils";
+import { ExcludeFalsy, isString } from "src/utils";
 import styled from "styled-components/macro";
 import { RoleSummaryList, RoleSummaryText, SkillBadge } from "../atoms";
 import { useResumeContext } from "../ResumeContext";
 import { RoleObject } from "../types";
 import TitleRow from "./TitleRow";
+import { HideWhenPrinting } from "src/atoms";
 
 const SkillsContainer = styled.div`
   display: flex;
@@ -18,20 +19,34 @@ const SkillsContainer = styled.div`
 
 const Summary = ({ summary, title }: Pick<RoleObject, "summary" | "title">) => {
   const { state } = useResumeContext();
-  const visibleSummary = summary[state.toneOfVoice];
-  if (isString(visibleSummary)) {
-    return <RoleSummaryText>{visibleSummary}</RoleSummaryText>;
+  const summaryItems = summary[state.toneOfVoice].filter(ExcludeFalsy);
+  switch (summaryItems.length) {
+    case 0:
+      return null;
+    case 1: {
+      const { content, hideWhenPrinting = false } = summaryItems[0];
+      return (
+        <HideWhenPrinting hide={hideWhenPrinting}>
+          {isString(content) ? (
+            <RoleSummaryText>{content}</RoleSummaryText>
+          ) : (
+            content
+          )}
+        </HideWhenPrinting>
+      );
+    }
+    default: {
+      return (
+        <RoleSummaryList>
+          {summaryItems.map(({ content, hideWhenPrinting = false }, i) => (
+            <HideWhenPrinting hide={hideWhenPrinting}>
+              <li key={`roleSummaryList_${title}_${i}`}>{content}</li>
+            </HideWhenPrinting>
+          ))}
+        </RoleSummaryList>
+      );
+    }
   }
-  if (Array.isArray(visibleSummary)) {
-    return (
-      <RoleSummaryList>
-        {visibleSummary.map((item, i) => (
-          <li key={`roleSummaryList_${title}_${i}`}>{item}</li>
-        ))}
-      </RoleSummaryList>
-    );
-  }
-  return visibleSummary;
 };
 
 const RoleContainer = styled.div`

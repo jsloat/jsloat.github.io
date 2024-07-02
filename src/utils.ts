@@ -21,3 +21,6 @@ export const capitalize = (str: string) =>
 
 export const isString = (val: any): val is string =>
   typeof val === "string" || val instanceof String;
+
+// https://stackoverflow.com/questions/47632622/typescript-and-filter-boolean
+export const ExcludeFalsy = Boolean as any as <T>(x: T | Falsy) => x is T;

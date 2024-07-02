@@ -6,6 +6,7 @@ import styled, {
 } from "styled-components/macro";
 import { SectionHeaderObject } from "./types";
 import openExternalIcon from "../assets/open-external.svg";
+import { HideWhenPrinting } from "src/atoms";
 
 const SectionHeaderContainer = styled.div`
   border-bottom: 1px solid ${colors.slate[300]};
@@ -13,12 +14,6 @@ const SectionHeaderContainer = styled.div`
   @media print {
     margin-top: 1.5em;
     border-bottom-color: black;
-  }
-`;
-
-export const HideWhenPrinting = styled.div`
-  @media print {
-    display: none;
   }
 `;
 
