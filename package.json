@@ -17,7 +17,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "git push;gh-pages -d build",
+    "justDeploy": "gh-pages -d build",
+    "deploy": "git push;npm run justDeploy",
     "unused": "ts-unused-exports ./tsconfig.json --exitWithUnusedTypesCount"
   },
   "eslintConfig": {
