@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import TwoMonthCal from "./modules/TwoMonthCal";
 import MonthlyLog from "./modules/MonthlyLog";
-import MiniWeekdayCalendar from "./modules/MiniWeekdayCalendar";
-import pocketCalStorage from "./pocketCalStorage";
+// import MiniWeekdayCalendar from "./modules/MiniWeekdayCalendar";
+// import pocketCalStorage from "./pocketCalStorage";
 
 // Helper to format mm values for CSS
 const mm = (v: number) => `${v}mm`;
@@ -127,14 +127,14 @@ const Mini = styled.div`
   box-sizing: border-box;
 `;
 
-const RotateLeft = styled.div`
-  transform: rotate(-90deg);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+// const RotateLeft = styled.div`
+//   transform: rotate(-90deg);
+//   width: 100%;
+//   height: 100%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// `;
 
 // const Rotate180 = styled.div`
 //   transform: rotate(180deg);
@@ -184,7 +184,7 @@ export default function PocketCal() {
                 </Half>
 
                 <HalfRight>
-                  <Mini>
+                  {/* <Mini>
                     <RotateLeft>
                       <MiniWeekdayCalendar
                         startDate={startDate}
@@ -195,14 +195,15 @@ export default function PocketCal() {
                         onTitleChange={(t) =>
                           pocketCalStorage.set("miniWeekdayCalendar1Title", t)
                         }
+                        instanceId={1}
                       />
                     </RotateLeft>
-                  </Mini>
+                  </Mini> */}
 
                   <Mini />
                   <Mini />
 
-                  <Mini>
+                  {/* <Mini>
                     <RotateLeft>
                       <MiniWeekdayCalendar
                         startDate={startDate}
@@ -213,9 +214,10 @@ export default function PocketCal() {
                         onTitleChange={(t) =>
                           pocketCalStorage.set("miniWeekdayCalendar2Title", t)
                         }
+                        instanceId={2}
                       />
                     </RotateLeft>
-                  </Mini>
+                  </Mini> */}
                 </HalfRight>
               </ContentRow>
             </Sheet>

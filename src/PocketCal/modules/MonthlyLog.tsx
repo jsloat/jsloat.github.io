@@ -15,12 +15,6 @@ const Wrapper = styled.div`
   background: white;
 `;
 
-const Title = styled.div`
-  font-weight: 700;
-  font-size: 14px;
-  margin-bottom: 8px;
-`;
-
 const Rows = styled.div`
   flex: 1 1 auto;
   display: flex;
@@ -88,17 +82,20 @@ const Notes = styled.div`
 `;
 
 export default function MonthlyLog({ startDate }: Props) {
-  const d = new Date(startDate + "T00:00:00");
-  const year = d.getFullYear();
-  const month = d.getMonth();
-  const firstOfMonth = new Date(year, month, 1);
-  const lastDay = new Date(year, month + 1, 0).getDate();
+  const start = new Date(startDate + "T00:00:00");
+  // last visible day: 28 days forward from start (inclusive)
+  const startDatePlus28D = new Date(start);
+  startDatePlus28D.setDate(start.getDate() + 28);
 
-  const monthTitle = `${firstOfMonth
-    .toLocaleString("en-US", {
-      month: "long",
-    })
-    .toUpperCase()} ${year}`;
+  // build array of Date objects from start .. startDatePlus28D (inclusive)
+  const dates: Date[] = [];
+  for (
+    let dt = new Date(start);
+    dt <= startDatePlus28D;
+    dt.setDate(dt.getDate() + 1)
+  ) {
+    dates.push(new Date(dt));
+  }
 
   const weekdayLetter = (date: Date) => {
     switch (date.getDay()) {
@@ -121,8 +118,6 @@ export default function MonthlyLog({ startDate }: Props) {
     }
   };
 
-  const days = Array.from({ length: lastDay }, (_, i) => i + 1);
-
   // localStorage key helper: namespaced and indexed by YYYYMMDD
   const keyFor = (y: number, m: number, day: number) => {
     const mm = String(m + 1).padStart(2, "0");
@@ -130,49 +125,46 @@ export default function MonthlyLog({ startDate }: Props) {
     return `pocketcal:monthlyLog:${y}${mm}${dd}`; // e.g. pocketcal:monthlyLog:20250817
   };
 
-  // load initial entries for the month
+  // load initial entries for the date range
   const initialEntries = useMemo(() => {
-    const map: Record<number, string> = {};
-    for (let day = 1; day <= lastDay; day++) {
-      const k = keyFor(year, month, day);
+    const map: Record<string, string> = {};
+    for (const dt of dates) {
+      const k = keyFor(dt.getFullYear(), dt.getMonth(), dt.getDate());
       const v = pocketCalStorage.getMonthlyLogEntry(k) ?? "";
-      map[day] = v;
+      map[k] = v;
     }
     return map;
   }, [startDate]);
 
   const [entries, setEntries] =
-    useState<Record<number, string>>(initialEntries);
+    useState<Record<string, string>>(initialEntries);
 
   useEffect(() => {
-    // when month changes (startDate), reset entries from storage
+    // when startDate changes, reset entries from storage
     setEntries(initialEntries);
   }, [initialEntries]);
 
   return (
     <Wrapper aria-label="monthly-log">
-      <Title>{monthTitle}</Title>
       <Rows>
-        {days.map((day) => {
-          const dt = new Date(year, month, day);
-          const isDayBeforeStartDate = dt < new Date(startDate + "T00:00:00");
+        {dates.map((dt) => {
+          const k = keyFor(dt.getFullYear(), dt.getMonth(), dt.getDate());
+          const isDayBeforeStartDate = dt < start;
           return (
-            <Row key={day} isWeekend={dt.getDay() === 0 || dt.getDay() === 6}>
+            <Row key={k} isWeekend={dt.getDay() === 0 || dt.getDay() === 6}>
               <CheckBox checked={isDayBeforeStartDate} />
-              <DayNum>{day}</DayNum>
+              <DayNum>{dt.getDate()}</DayNum>
               <WeekLetter>{weekdayLetter(dt)}</WeekLetter>
               <Notes
                 contentEditable
                 suppressContentEditableWarning
                 onBlur={(e) => {
                   const t = (e.target as HTMLDivElement).innerText;
-                  pocketCalStorage.setMonthlyLogEntry(
-                    keyFor(year, month, day),
-                    t
-                  );
+                  pocketCalStorage.setMonthlyLogEntry(k, t);
+                  setEntries((s) => ({ ...s, [k]: t }));
                 }}
               >
-                {entries[day]}
+                {entries[k]}
               </Notes>
             </Row>
           );
