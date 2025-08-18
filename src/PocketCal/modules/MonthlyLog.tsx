@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { colors } from "src/consts";
 import styled from "styled-components";
+import pocketCalStorage from "../pocketCalStorage";
 
 type Props = { startDate: string };
 
@@ -42,11 +43,26 @@ const Row = styled.div<{ isWeekend: boolean }>`
   })}
 `;
 
-const CheckBox = styled.div`
+const CheckBox = styled.div<{ checked?: boolean }>`
   width: 18px;
   height: 18px;
   border: 1px solid ${colors.slate[400]};
   border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 1;
+  color: ${colors.slate[700]};
+
+  /* show a real checkmark character when checked */
+  &::after {
+    content: "✓";
+    display: ${({ checked }) => (checked ? "block" : "none")};
+    font-size: 12px;
+    line-height: 1;
+    color: inherit;
+  }
 `;
 
 const DayNum = styled.div`
@@ -66,6 +82,9 @@ const WeekLetter = styled.div`
 
 const Notes = styled.div`
   min-height: 20px;
+  font-size: 14px;
+  cursor: text;
+  min-width: 200px;
 `;
 
 export default function MonthlyLog({ startDate }: Props) {
@@ -104,18 +123,57 @@ export default function MonthlyLog({ startDate }: Props) {
 
   const days = Array.from({ length: lastDay }, (_, i) => i + 1);
 
+  // localStorage key helper: namespaced and indexed by YYYYMMDD
+  const keyFor = (y: number, m: number, day: number) => {
+    const mm = String(m + 1).padStart(2, "0");
+    const dd = String(day).padStart(2, "0");
+    return `pocketcal:monthlyLog:${y}${mm}${dd}`; // e.g. pocketcal:monthlyLog:20250817
+  };
+
+  // load initial entries for the month
+  const initialEntries = useMemo(() => {
+    const map: Record<number, string> = {};
+    for (let day = 1; day <= lastDay; day++) {
+      const k = keyFor(year, month, day);
+      const v = pocketCalStorage.getMonthlyLogEntry(k) ?? "";
+      map[day] = v;
+    }
+    return map;
+  }, [startDate]);
+
+  const [entries, setEntries] =
+    useState<Record<number, string>>(initialEntries);
+
+  useEffect(() => {
+    // when month changes (startDate), reset entries from storage
+    setEntries(initialEntries);
+  }, [initialEntries]);
+
   return (
     <Wrapper aria-label="monthly-log">
       <Title>{monthTitle}</Title>
       <Rows>
         {days.map((day) => {
           const dt = new Date(year, month, day);
+          const isDayBeforeStartDate = dt < new Date(startDate + "T00:00:00");
           return (
             <Row key={day} isWeekend={dt.getDay() === 0 || dt.getDay() === 6}>
-              <CheckBox />
+              <CheckBox checked={isDayBeforeStartDate} />
               <DayNum>{day}</DayNum>
               <WeekLetter>{weekdayLetter(dt)}</WeekLetter>
-              <Notes />
+              <Notes
+                contentEditable
+                suppressContentEditableWarning
+                onBlur={(e) => {
+                  const t = (e.target as HTMLDivElement).innerText;
+                  pocketCalStorage.setMonthlyLogEntry(
+                    keyFor(year, month, day),
+                    t
+                  );
+                }}
+              >
+                {entries[day]}
+              </Notes>
             </Row>
           );
         })}

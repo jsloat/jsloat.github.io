@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import TwoMonthCal from "./modules/TwoMonthCal";
 import MonthlyLog from "./modules/MonthlyLog";
 import MiniWeekdayCalendar from "./modules/MiniWeekdayCalendar";
+import pocketCalStorage from "./pocketCalStorage";
 
 // Helper to format mm values for CSS
 const mm = (v: number) => `${v}mm`;
@@ -41,12 +42,13 @@ const Container = styled.div`
 
 const Layout = styled.div`
   display: flex;
-  gap: 16px;
   align-items: flex-start;
+  flex-direction: column;
 `;
 
 const Sidebar = styled.div`
-  flex: 0 0 320px;
+  margin-bottom: 16px;
+  align-self: center;
 `;
 
 const Label = styled.label`
@@ -68,6 +70,7 @@ const PrintArea = styled.div.attrs({ id: "print-area" })`
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 // ModuleContainer now absolutely positioned inside the sheet and rotated
@@ -145,8 +148,10 @@ const RotateLeft = styled.div`
 export default function PocketCal() {
   const [startDate, setStartDate] = useState(() => {
     const d = new Date();
-    d.setDate(1);
-    return d.toISOString().slice(0, 10);
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    const dd = String(d.getDate()).padStart(2, "0");
+    return `${yyyy}-${mm}-${dd}`;
   });
 
   // compute module start = first day of the month AFTER the selected startDate
@@ -183,7 +188,13 @@ export default function PocketCal() {
                     <RotateLeft>
                       <MiniWeekdayCalendar
                         startDate={startDate}
-                        initTitle="Jo childcare"
+                        initTitle={
+                          pocketCalStorage.get("miniWeekdayCalendar1Title") ??
+                          "Weekday planner"
+                        }
+                        onTitleChange={(t) =>
+                          pocketCalStorage.set("miniWeekdayCalendar1Title", t)
+                        }
                       />
                     </RotateLeft>
                   </Mini>
@@ -195,7 +206,13 @@ export default function PocketCal() {
                     <RotateLeft>
                       <MiniWeekdayCalendar
                         startDate={startDate}
-                        initTitle="Charlie childcare"
+                        initTitle={
+                          pocketCalStorage.get("miniWeekdayCalendar2Title") ??
+                          "Weekday planner"
+                        }
+                        onTitleChange={(t) =>
+                          pocketCalStorage.set("miniWeekdayCalendar2Title", t)
+                        }
                       />
                     </RotateLeft>
                   </Mini>

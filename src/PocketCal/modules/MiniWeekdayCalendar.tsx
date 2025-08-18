@@ -2,9 +2,17 @@ import React, { useMemo, useState } from "react";
 import { colors } from "src/consts";
 import styled from "styled-components";
 
-type Props = { startDate: string; initTitle: string };
+type Props = {
+  startDate: string;
+  initTitle: string;
+  onTitleChange: (t: string) => void;
+};
 
-export default function MiniWeekdayCalendar({ startDate, initTitle }: Props) {
+export default function MiniWeekdayCalendar({
+  startDate,
+  initTitle,
+  onTitleChange,
+}: Props) {
   const start = new Date(startDate + "T00:00:00");
   const year = start.getFullYear();
   const month = start.getMonth();
@@ -80,7 +88,11 @@ export default function MiniWeekdayCalendar({ startDate, initTitle }: Props) {
       <Title
         contentEditable
         suppressContentEditableWarning
-        onInput={(e) => setTitle((e.target as HTMLDivElement).innerText)}
+        onBlur={(e) => {
+          const t = (e.target as HTMLDivElement).innerText;
+          setTitle(t);
+          onTitleChange(t);
+        }}
       >
         {title}
       </Title>
@@ -122,6 +134,7 @@ const Title = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
 `;
 
 const Grid = styled.div`
