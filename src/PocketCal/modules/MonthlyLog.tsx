@@ -79,6 +79,19 @@ const Notes = styled.div`
   font-size: 14px;
   cursor: text;
   min-width: 200px;
+  flex: 1 1 auto;
+`;
+
+const MonthBadge = styled.div`
+  margin-left: 8px;
+  background: ${colors.slate[100]};
+  color: ${colors.slate[700]};
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1em;
 `;
 
 export default function MonthlyLog({ startDate }: Props) {
@@ -147,7 +160,7 @@ export default function MonthlyLog({ startDate }: Props) {
   return (
     <Wrapper aria-label="monthly-log">
       <Rows>
-        {dates.map((dt) => {
+        {dates.map((dt, idx) => {
           const k = keyFor(dt.getFullYear(), dt.getMonth(), dt.getDate());
           const isDayBeforeStartDate = dt < start;
           return (
@@ -166,6 +179,13 @@ export default function MonthlyLog({ startDate }: Props) {
               >
                 {entries[k]}
               </Notes>
+              {(dt.getDate() === 1 || idx === 0) && (
+                <MonthBadge>
+                  {dt
+                    .toLocaleString(undefined, { month: "short" })
+                    .toUpperCase()}
+                </MonthBadge>
+              )}
             </Row>
           );
         })}
