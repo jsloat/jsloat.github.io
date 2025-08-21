@@ -70,6 +70,13 @@ const DateRowContents = ({
       <Notes
         contentEditable
         suppressContentEditableWarning
+        onKeyDown={(e) => {
+          const isEnter = e.key === "Enter";
+          const isEscape = e.key === "Escape";
+          if (!isEnter && !isEscape) return;
+          if (isEnter) e.preventDefault();
+          e.currentTarget.blur();
+        }}
         onBlur={(e) => {
           const t = (e.target as HTMLDivElement).innerText;
           pocketCalStorage.setMonthlyLogEntry(date, t);
