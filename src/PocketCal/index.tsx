@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import TwoMonthCal from "./modules/TwoMonthCal";
 import MonthlyLog from "./modules/MonthlyLog";
+import GraphPaperNotes from "./modules/GraphPaperNotes";
 // import MiniWeekdayCalendar from "./modules/MiniWeekdayCalendar";
 // import pocketCalStorage from "./pocketCalStorage";
 
@@ -116,16 +117,16 @@ const Half = styled.div`
   background: transparent;
 `;
 
-const HalfRight = styled(Half)`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
+// const HalfRight = styled(Half)`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 8px;
+// `;
 
-const Mini = styled.div`
-  height: 25%;
-  box-sizing: border-box;
-`;
+// const Mini = styled.div`
+//   height: 25%;
+//   box-sizing: border-box;
+// `;
 
 // const RotateLeft = styled.div`
 //   transform: rotate(-90deg);
@@ -183,42 +184,9 @@ export default function PocketCal() {
                   <MonthlyLog startDate={startDate} />
                 </Half>
 
-                <HalfRight>
-                  {/* <Mini>
-                    <RotateLeft>
-                      <MiniWeekdayCalendar
-                        startDate={startDate}
-                        initTitle={
-                          pocketCalStorage.get("miniWeekdayCalendar1Title") ??
-                          "Weekday planner"
-                        }
-                        onTitleChange={(t) =>
-                          pocketCalStorage.set("miniWeekdayCalendar1Title", t)
-                        }
-                        instanceId={1}
-                      />
-                    </RotateLeft>
-                  </Mini> */}
-
-                  <Mini />
-                  <Mini />
-
-                  {/* <Mini>
-                    <RotateLeft>
-                      <MiniWeekdayCalendar
-                        startDate={startDate}
-                        initTitle={
-                          pocketCalStorage.get("miniWeekdayCalendar2Title") ??
-                          "Weekday planner"
-                        }
-                        onTitleChange={(t) =>
-                          pocketCalStorage.set("miniWeekdayCalendar2Title", t)
-                        }
-                        instanceId={2}
-                      />
-                    </RotateLeft>
-                  </Mini> */}
-                </HalfRight>
+                <Half>
+                  <GraphPaperNotes />
+                </Half>
               </ContentRow>
             </Sheet>
 
