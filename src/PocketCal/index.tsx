@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import MonthlyLog from "./modules/MonthlyLog";
 import GraphPaperNotes from "./modules/GraphPaperNotes";
+import ChildcareScheduler from "./modules/ChildcareScheduler";
 
 export default function PocketCal() {
   const [startDate, setStartDate] = useState(() => {
@@ -40,7 +41,11 @@ export default function PocketCal() {
               </ContentRow>
             </Sheet>
 
-            <Sheet>HELLO WORLD</Sheet>
+            <Sheet>
+              <ContentRow>
+                <ChildcareScheduler />
+              </ContentRow>
+            </Sheet>
           </PrintArea>
         </PrintAreaWrapper>
       </Layout>

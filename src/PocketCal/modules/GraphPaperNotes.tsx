@@ -29,7 +29,7 @@ const GridArea = styled.div`
   // Dot grid
   background-image: radial-gradient(
     circle,
-    rgba(0, 0, 0, 0.8) 1px,
+    rgba(0, 0, 0, 1) 1px,
     transparent 1px
   );
   background-size: 5mm 5mm;
