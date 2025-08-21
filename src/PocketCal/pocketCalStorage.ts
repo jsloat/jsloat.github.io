@@ -41,14 +41,21 @@ const clearAll = () => {
   }
 };
 
-const getMonthlyLogEntry = (dateKey: string) => {
-  const dict = get("monthlyLogEntries");
-  return dict?.[dateKey] ?? null;
+const getDayKey = (date: Date): string => {
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, "0");
+  const dd = String(date.getDate()).padStart(2, "0");
+  return `${yyyy}${mm}${dd}`; // e.g. 20250817
 };
 
-const setMonthlyLogEntry = (dateKey: string, entry: string) => {
+const getMonthlyLogEntry = (date: Date) => {
+  const dict = get("monthlyLogEntries");
+  return dict?.[getDayKey(date)] ?? null;
+};
+
+const setMonthlyLogEntry = (date: Date, entry: string) => {
   const dict = get("monthlyLogEntries") ?? {};
-  dict[dateKey] = entry;
+  dict[getDayKey(date)] = entry;
   set("monthlyLogEntries", dict);
 };
 
@@ -57,6 +64,7 @@ export default {
   set,
   clear,
   clearAll,
+  getDayKey,
   getMonthlyLogEntry,
   setMonthlyLogEntry,
 };

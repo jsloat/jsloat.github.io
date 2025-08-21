@@ -4,6 +4,88 @@ import styled from "styled-components";
 import pocketCalStorage from "../pocketCalStorage";
 
 type Props = { startDate: string };
+export default function MonthlyLog({ startDate }: Props) {
+  const visibleDates = getVisibleDates(new Date(startDate + "T00:00:00"), 28);
+
+  const initialEntries = useMemo(() => {
+    const map: Record<string, string> = {};
+    for (const date of visibleDates) {
+      const k = pocketCalStorage.getDayKey(date);
+      const v = pocketCalStorage.getMonthlyLogEntry(date) ?? "";
+      map[k] = v;
+    }
+    return map;
+  }, [startDate]);
+
+  const [entries, setEntries] =
+    useState<Record<string, string>>(initialEntries);
+
+  useEffect(() => {
+    setEntries(initialEntries);
+  }, [initialEntries]);
+
+  return (
+    <Wrapper aria-label="monthly-log">
+      <Rows>
+        {visibleDates.map((date, i) => {
+          const dateKey = pocketCalStorage.getDayKey(date);
+          return (
+            <DateRowContents
+              date={date}
+              entry={entries[dateKey]}
+              setEntries={setEntries}
+              key={dateKey}
+              index={i}
+            />
+          );
+        })}
+      </Rows>
+    </Wrapper>
+  );
+}
+
+type DateRowContentsProps = {
+  date: Date;
+  entry: string | undefined;
+  setEntries: React.Dispatch<React.SetStateAction<Record<string, string>>>;
+  index: number;
+};
+const DateRowContents = ({
+  date,
+  entry,
+  setEntries,
+  index,
+}: DateRowContentsProps) => {
+  const dateKey = pocketCalStorage.getDayKey(date);
+  const dayOfWeek = date.getDay();
+  const dayOfMonth = date.getDate();
+  const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+  const shouldShowMonthBadge = dayOfMonth === 1 || index === 0;
+
+  return (
+    <Row key={dateKey} isWeekend={isWeekend}>
+      <CheckBox />
+      <DayNum>{dayOfMonth}</DayNum>
+      <WeekLetter>{weekdayLetters[dayOfWeek]}</WeekLetter>
+      <Notes
+        contentEditable
+        suppressContentEditableWarning
+        onBlur={(e) => {
+          const t = (e.target as HTMLDivElement).innerText;
+          pocketCalStorage.setMonthlyLogEntry(date, t);
+          setEntries((s) => ({ ...s, [dateKey]: t }));
+        }}
+      >
+        {entry}
+      </Notes>
+      {shouldShowMonthBadge && (
+        <MonthBadge>
+          {date.toLocaleString(undefined, { month: "short" }).toUpperCase()}
+        </MonthBadge>
+      )}
+    </Row>
+  );
+};
 
 const Wrapper = styled.div`
   width: 100%;
@@ -48,15 +130,6 @@ const CheckBox = styled.div<{ checked?: boolean }>`
   font-size: 12px;
   line-height: 1;
   color: ${colors.slate[700]};
-
-  /* show a real checkmark character when checked */
-  &::after {
-    content: "✓";
-    display: ${({ checked }) => (checked ? "block" : "none")};
-    font-size: 12px;
-    line-height: 1;
-    color: inherit;
-  }
 `;
 
 const DayNum = styled.div`
@@ -94,102 +167,14 @@ const MonthBadge = styled.div`
   line-height: 1em;
 `;
 
-export default function MonthlyLog({ startDate }: Props) {
-  const start = new Date(startDate + "T00:00:00");
-  // last visible day: 28 days forward from start (inclusive)
-  const startDatePlus28D = new Date(start);
-  startDatePlus28D.setDate(start.getDate() + 28);
+const weekdayLetters = ["S", "M", "T", "W", "T", "F", "S"];
 
-  // build array of Date objects from start .. startDatePlus28D (inclusive)
+const getVisibleDates = (start: Date, days: number): Date[] => {
   const dates: Date[] = [];
-  for (
-    let dt = new Date(start);
-    dt <= startDatePlus28D;
-    dt.setDate(dt.getDate() + 1)
-  ) {
-    dates.push(new Date(dt));
+  for (let i = 0; i < days; i++) {
+    const dt = new Date(start);
+    dt.setDate(start.getDate() + i);
+    dates.push(dt);
   }
-
-  const weekdayLetter = (date: Date) => {
-    switch (date.getDay()) {
-      case 0:
-        return "S";
-      case 1:
-        return "M";
-      case 2:
-        return "T";
-      case 3:
-        return "W";
-      case 4:
-        return "T";
-      case 5:
-        return "F";
-      case 6:
-        return "S";
-      default:
-        return "";
-    }
-  };
-
-  // localStorage key helper: namespaced and indexed by YYYYMMDD
-  const keyFor = (y: number, m: number, day: number) => {
-    const mm = String(m + 1).padStart(2, "0");
-    const dd = String(day).padStart(2, "0");
-    return `pocketcal:monthlyLog:${y}${mm}${dd}`; // e.g. pocketcal:monthlyLog:20250817
-  };
-
-  // load initial entries for the date range
-  const initialEntries = useMemo(() => {
-    const map: Record<string, string> = {};
-    for (const dt of dates) {
-      const k = keyFor(dt.getFullYear(), dt.getMonth(), dt.getDate());
-      const v = pocketCalStorage.getMonthlyLogEntry(k) ?? "";
-      map[k] = v;
-    }
-    return map;
-  }, [startDate]);
-
-  const [entries, setEntries] =
-    useState<Record<string, string>>(initialEntries);
-
-  useEffect(() => {
-    // when startDate changes, reset entries from storage
-    setEntries(initialEntries);
-  }, [initialEntries]);
-
-  return (
-    <Wrapper aria-label="monthly-log">
-      <Rows>
-        {dates.map((dt, idx) => {
-          const k = keyFor(dt.getFullYear(), dt.getMonth(), dt.getDate());
-          const isDayBeforeStartDate = dt < start;
-          return (
-            <Row key={k} isWeekend={dt.getDay() === 0 || dt.getDay() === 6}>
-              <CheckBox checked={isDayBeforeStartDate} />
-              <DayNum>{dt.getDate()}</DayNum>
-              <WeekLetter>{weekdayLetter(dt)}</WeekLetter>
-              <Notes
-                contentEditable
-                suppressContentEditableWarning
-                onBlur={(e) => {
-                  const t = (e.target as HTMLDivElement).innerText;
-                  pocketCalStorage.setMonthlyLogEntry(k, t);
-                  setEntries((s) => ({ ...s, [k]: t }));
-                }}
-              >
-                {entries[k]}
-              </Notes>
-              {(dt.getDate() === 1 || idx === 0) && (
-                <MonthBadge>
-                  {dt
-                    .toLocaleString(undefined, { month: "short" })
-                    .toUpperCase()}
-                </MonthBadge>
-              )}
-            </Row>
-          );
-        })}
-      </Rows>
-    </Wrapper>
-  );
-}
+  return dates;
+};

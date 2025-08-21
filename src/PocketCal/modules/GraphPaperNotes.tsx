@@ -1,6 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
+export default function GraphPaperNotes() {
+  return (
+    <Wrapper aria-label="graph-paper-notes">
+      <Title>Notes</Title>
+      <GridArea />
+    </Wrapper>
+  );
+}
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -17,7 +26,7 @@ const Title = styled.div`
 
 const GridArea = styled.div`
   flex: 1 1 auto;
-  /* dot grid */
+  // Dot grid
   background-image: radial-gradient(
     circle,
     rgba(0, 0, 0, 0.8) 1px,
@@ -27,12 +36,3 @@ const GridArea = styled.div`
   background-position: 0 0;
   background-color: rgba(0, 0, 0, 0.01);
 `;
-
-export default function GraphPaperNotes() {
-  return (
-    <Wrapper aria-label="graph-paper-notes">
-      <Title>Notes</Title>
-      <GridArea />
-    </Wrapper>
-  );
-}
