@@ -22,6 +22,7 @@ import {
   PERSONAL_PROJECTS,
   SLOAT_MARKETING,
   TRUVETA_SENIOR_FE,
+  TRUVETA_SENIOR_FE_5,
 } from "./rolesData";
 import ToneOfVoiceToggle from "./ToneOfVoiceToggle";
 import { ResumeState } from "./types";
@@ -109,6 +110,7 @@ const Resume = () => {
 
           <SectionHeader href="https://www.truveta.com">Truveta</SectionHeader>
           <RolesContainer>
+            <Role {...TRUVETA_SENIOR_FE_5} />
             <Role {...TRUVETA_SENIOR_FE} />
           </RolesContainer>
 
