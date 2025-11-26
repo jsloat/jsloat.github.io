@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import MonthlyLog from "./modules/MonthlyLog";
-import GraphPaperNotes from "./modules/GraphPaperNotes";
 import ChildcareScheduler from "./modules/ChildcareScheduler";
 
 export default function PocketCal() {
@@ -31,19 +30,19 @@ export default function PocketCal() {
           <PrintArea>
             <Sheet>
               <ContentRow>
-                <Half>
-                  <MonthlyLog startDate={startDate} />
-                </Half>
+                {/* <Half> */}
+                <MonthlyLog startDate={startDate} />
+                {/* </Half> */}
 
-                <Half>
+                {/* <Half>
                   <GraphPaperNotes />
-                </Half>
+                </Half> */}
               </ContentRow>
             </Sheet>
 
             <Sheet>
-              <ContentRow>
-                <ChildcareScheduler />
+              <ContentRow style={{ maxHeight: `${SHEET_HEIGHT_MM}mm` }}>
+                <ChildcareScheduler startDate={startDate} />
               </ContentRow>
             </Sheet>
           </PrintArea>
@@ -128,7 +127,7 @@ const Sheet = styled.div.attrs({ className: "sheet" })`
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
 `;
 
@@ -141,9 +140,9 @@ const ContentRow = styled.div`
   flex: 1 1 auto;
 `;
 
-const Half = styled.div`
-  width: 50%;
-  height: 100%;
-  box-sizing: border-box;
-  background: transparent;
-`;
+// const Half = styled.div`
+//   width: 50%;
+//   height: 100%;
+//   box-sizing: border-box;
+//   background: transparent;
+// `;

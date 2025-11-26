@@ -1,3 +1,5 @@
+import { Day, Week, Weekday } from "./types";
+
 /** Time is input in 24 hours time, may or may not have leading padding. */
 export const timeToMinutesFromMidnight = (time: string): number => {
   const [hours, minutes] = time.split(":").map(Number);
@@ -14,3 +16,16 @@ export const minutesToTimeLabel = (m: number): string => {
 };
 
 const pad = (n: number) => String(n).padStart(2, "0");
+
+const getEmptyDay = (weekday: Weekday): Day => ({
+  data: { CMS: [], JSS: [] },
+  weekday,
+});
+
+export const emptyWeek: Week = [
+  getEmptyDay("Monday"),
+  getEmptyDay("Tuesday"),
+  getEmptyDay("Wednesday"),
+  getEmptyDay("Thursday"),
+  getEmptyDay("Friday"),
+];

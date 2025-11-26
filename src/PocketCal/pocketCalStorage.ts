@@ -1,11 +1,17 @@
 const PREFIX = "pocketcal:";
 
+import type { Week } from "./modules/ChildcareScheduler/types";
+
 type KeyToType = {
   monthlyLogEntries: Record<string, string>; // Key = YYYYMMDD
+  childcareWeek: Week;
+  caretakerColors: Record<string, string>;
 };
 
 const ALL_KEYS_RECORD: Record<keyof KeyToType, boolean> = {
   monthlyLogEntries: true,
+  childcareWeek: true,
+  caretakerColors: true,
 };
 
 const ALL_KEYS = Object.keys(ALL_KEYS_RECORD) as (keyof KeyToType)[];
@@ -41,6 +47,16 @@ const clearAll = () => {
   }
 };
 
+const getWeek = (): Week | null => get("childcareWeek");
+
+const setWeek = (week: Week) => set("childcareWeek", week);
+
+const getCaretakerColors = (): Record<string, string> | null =>
+  get("caretakerColors");
+
+const setCaretakerColors = (m: Record<string, string>) =>
+  set("caretakerColors", m);
+
 const getDayKey = (date: Date): string => {
   const yyyy = date.getFullYear();
   const mm = String(date.getMonth() + 1).padStart(2, "0");
@@ -67,4 +83,8 @@ export default {
   getDayKey,
   getMonthlyLogEntry,
   setMonthlyLogEntry,
+  getWeek,
+  setWeek,
+  getCaretakerColors,
+  setCaretakerColors,
 };

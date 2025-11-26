@@ -1,22 +1,24 @@
 /** E.g.: Midnight = 0, noon = 60 * 12 = 720 */
 type MinutesFromMidnight = number;
 
-export type Caretaker = { name: string; color?: string };
-
 export type Timespan = {
-  caretaker: Caretaker;
+  caretaker: string;
   startMinutes: MinutesFromMidnight;
   endMinutes: MinutesFromMidnight;
 };
 
 type Dayspan = Timespan[];
 
-/** E.g. 20250812 for August 12th, 2025 */
-export type DateKey = `${number}`;
+export type Weekday =
+  | "Monday"
+  | "Tuesday"
+  | "Wednesday"
+  | "Thursday"
+  | "Friday";
 
 export type Day = {
-  dateKey: DateKey;
-  childToDayspan: Record<string, Dayspan>;
+  weekday: Weekday;
+  data: { JSS: Dayspan; CMS: Dayspan };
   notes?: string;
 };
 
