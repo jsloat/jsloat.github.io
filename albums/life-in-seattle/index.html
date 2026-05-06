@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Life in Seattle</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      margin: 0;
+      background: #ffffff;
+      color: #2f241f;
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0 0 2rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin: 2rem 0 1rem;
+      border-bottom: 1px solid #c8b4a0;
+      padding-bottom: 0.5rem;
+    }
+
+    .group {
+      margin-bottom: 3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      margin: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(47, 36, 31, 0.08);
+    }
+
+    .export-media-button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: zoom-in;
+    }
+
+    img,
+    video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #eadfd0;
+    }
+
+    figcaption {
+      padding: 14px 16px 18px;
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .export-media-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(24, 17, 14, 0.72);
+      backdrop-filter: blur(10px);
+    }
+
+    .export-media-modal.is-open {
+      display: flex;
+    }
+
+    .export-media-modal-card {
+      width: min(1000px, 100%);
+      max-height: 90vh;
+      overflow: auto;
+      border-radius: 28px;
+      background: #fffaf4;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.22);
+      padding: 18px;
+    }
+
+    .export-media-modal-close {
+      margin-left: auto;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .export-media-modal-stage img,
+    .export-media-modal-stage video {
+      display: block;
+      width: 100%;
+      max-height: 68vh;
+      object-fit: contain;
+      border-radius: 20px;
+      background: #eadfd0;
+    }
+
+    .export-media-modal-meta {
+      padding: 16px 6px 4px;
+    }
+
+    .export-media-modal-meta p {
+      margin: 8px 0 0;
+      color: #5f4a3f;
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Life in Seattle</h1>
+    <section class="group">
+      <h2>Snow</h2>
+      <div class="grid">
+        <figure class="card">
+          <button class="export-media-button" data-action="open-export-media" data-media-type="video"
+            data-media-name="80535BBB-9FFD-4A7B-87EC-380176E780BC.mov" data-media-caption="Josefine in our backyard">
+            <video src="./assets/80535BBB-9FFD-4A7B-87EC-380176E780BC.mov" preload="metadata"
+              muted="" playsinline=""></video>
+          </button>
+          <figcaption>Josefine in our backyard</figcaption>
+        </figure>
+        <figure class="card">
+          <button class="export-media-button" data-action="open-export-media" data-media-type="image"
+            data-media-name="8B5A89AA-835B-4FA2-A7FE-5CA27365182D.JPG" data-media-caption="Sun Peaks in Canada">
+            <img src="./assets/8B5A89AA-835B-4FA2-A7FE-5CA27365182D.JPG"
+              alt="8B5A89AA-835B-4FA2-A7FE-5CA27365182D.JPG">
+          </button>
+          <figcaption>Sun Peaks in Canada</figcaption>
+        </figure>
+        <figure class="card">
+          <button class="export-media-button" data-action="open-export-media" data-media-type="image"
+            data-media-name="955A5EB4-7E1B-45D4-87A7-E98854C432E8.heic" data-media-caption="Inner tubing!">
+            <img src="./assets/955A5EB4-7E1B-45D4-87A7-E98854C432E8.jpg"
+              alt="955A5EB4-7E1B-45D4-87A7-E98854C432E8.heic">
+          </button>
+          <figcaption>Inner tubing!</figcaption>
+        </figure>
+        <figure class="card">
+          <button class="export-media-button" data-action="open-export-media" data-media-type="image"
+            data-media-name="9E1DEECC-A8FD-49E1-B7DD-E293AD43EB75.JPG" data-media-caption="Charlie learning to ski">
+            <img src="./assets/9E1DEECC-A8FD-49E1-B7DD-E293AD43EB75.JPG"
+              alt="9E1DEECC-A8FD-49E1-B7DD-E293AD43EB75.JPG">
+          </button>
+          <figcaption>Charlie learning to ski</figcaption>
+        </figure>
+        <figure class="card">
+          <button class="export-media-button" data-action="open-export-media" data-media-type="image"
+            data-media-name="IMG_6535.heic" data-media-caption="Christmas in Suncadia">
+            <img src="./assets/IMG_6535.jpg" alt="IMG_6535.heic">
+          </button>
+          <figcaption>Christmas in Suncadia</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="group">
+      <h2>Our neighborhood</h2>
+      <div class="grid">
+        <figure class="card">
+          <button class="export-media-button" data-action="open-export-media" data-media-type="image"
+            data-media-name="IMG_5366.heic" data-media-caption="Sunset on our front porch">
+            <img src="./assets/IMG_5366.jpg" alt="IMG_5366.heic">
+          </button>
+          <figcaption>Sunset on our front porch</figcaption>
+        </figure>
+        <figure class="card">
+          <button class="export-media-button" data-action="open-export-media" data-media-type="image"
+            data-media-name="IMG_5522.heic" data-media-caption="Chalk in front of our house">
+            <img src="./assets/IMG_5522.jpg" alt="IMG_5522.heic">
+          </button>
+          <figcaption>Chalk in front of our house</figcaption>
+        </figure>
+        <figure class="card">
+          <button class="export-media-button" data-action="open-export-media" data-media-type="image"
+            data-media-name="IMG_5597.heic"
+            data-media-caption="Impromptu BBQ with neighbors - Ebba on the bottom left!">
+            <img src="./assets/IMG_5597.jpg" alt="IMG_5597.heic">
+          </button>
+          <figcaption>Impromptu BBQ with neighbors - Ebba on the bottom left!</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="group">
+      <h2>Seattle</h2>
+      <div class="grid">
+        <figure class="card">
+          <button class="export-media-button" data-action="open-export-media" data-media-type="image"
+            data-media-name="IMG_7189.heic"
+            data-media-caption="Chinese New Year festival at the Seattle Center (8 minute drive, 30 minute walk)">
+            <img src="./assets/IMG_7189.jpg" alt="IMG_7189.heic">
+          </button>
+          <figcaption>Chinese New Year festival at the Seattle Center (8 minute drive, 30 minute walk)</figcaption>
+        </figure>
+        <figure class="card">
+          <button class="export-media-button" data-action="open-export-media" data-media-type="image"
+            data-media-name="IMG_7211.heic" data-media-caption="Downtown Seattle from a ferry boat">
+            <img src="./assets/IMG_7211.jpg" alt="IMG_7211.heic">
+          </button>
+          <figcaption>Downtown Seattle from a ferry boat</figcaption>
+        </figure>
+        <figure class="card">
+          <button class="export-media-button" data-action="open-export-media" data-media-type="image"
+            data-media-name="IMG_9419.JPG" data-media-caption="Museum day! Pacific Science Center">
+            <img src="./assets/IMG_9419.JPG" alt="IMG_9419.JPG">
+          </button>
+          <figcaption>Museum day! Pacific Science Center</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+  <div class="export-media-modal" data-role="export-media-modal">
+    <div class="export-media-modal-card">
+      <button class="export-media-modal-close" data-action="close-export-media">Close</button>
+      <div class="export-media-modal-stage"></div>
+      <div class="export-media-modal-meta">
+        <strong data-role="export-media-name">IMG_9419.JPG</strong>
+        <p data-role="export-media-caption">Museum day! Pacific Science Center</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    const exportMediaModal = document.querySelector('[data-role="export-media-modal"]');
+    const exportMediaStage = document.querySelector('.export-media-modal-stage');
+    const exportMediaName = document.querySelector('[data-role="export-media-name"]');
+    const exportMediaCaption = document.querySelector('[data-role="export-media-caption"]');
+    function openExportMedia(button) {
+      const type = button.dataset.mediaType;
+      const media = button.querySelector('img, video');
+      const src = media?.getAttribute('src') || '';
+      const name = button.dataset.mediaName || '';
+      const caption = button.dataset.mediaCaption || '';
+      exportMediaStage.innerHTML = type === 'video'
+        ? '<video src="' + src + '" controls autoplay preload="metadata"></video>'
+        : '<img src="' + src + '" alt="' + name + '" />';
+      exportMediaName.textContent = name;
+      exportMediaCaption.textContent = caption;
+      exportMediaModal.classList.add('is-open');
+    }
+    function closeExportMedia() {
+      exportMediaModal.classList.remove('is-open');
+      exportMediaStage.innerHTML = '';
+    }
+    document.querySelectorAll('[data-action="open-export-media"]').forEach((button) => {
+      button.addEventListener('click', () => openExportMedia(button));
+    });
+    document.querySelector('[data-action="close-export-media"]').addEventListener('click', closeExportMedia);
+    exportMediaModal.addEventListener('click', (event) => {
+      if (event.target === exportMediaModal) closeExportMedia();
+    });
+  </script>
+
+</body>
+
+</html>
