@@ -6,9 +6,9 @@ export default () => (
   <BaseContainer>
     <h2>sloat.life</h2>
     <ul>
-      {topLevelRoutes.map(({ label, route }) => {
+      {topLevelRoutes.map(({ label, route, excludeFromHomepage }) => {
         const parsedRoute = parseRoute(route);
-        if (!parsedRoute) return null;
+        if (!parsedRoute || excludeFromHomepage) return null;
         return (
           <li key={route}>
             <a href={parsedRoute} target="_self">

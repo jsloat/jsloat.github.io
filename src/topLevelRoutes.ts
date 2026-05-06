@@ -1,3 +1,4 @@
+import LifeInSeattle from "./Albums/LifeInSeattle";
 import ColorPalette from "./ColorPalette";
 import Home from "./Home";
 import PocketCal from "./PocketCal";
@@ -9,6 +10,7 @@ type Route = {
   label: string;
   route: string;
   element: () => JSX.Element;
+  excludeFromHomepage?: boolean;
 };
 
 export const topLevelRoutes: Route[] = [
@@ -46,5 +48,12 @@ export const topLevelRoutes: Route[] = [
     label: "Pocket Cal",
     route: "/pocket-cal",
     element: PocketCal,
+  },
+
+  {
+    label: "Life in Seattle",
+    route: "/albums/life-in-seattle",
+    element: LifeInSeattle,
+    excludeFromHomepage: true,
   },
 ];
